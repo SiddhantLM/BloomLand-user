@@ -160,7 +160,7 @@ const Navbar = () => {
             //   scrolled || window.location.pathname === "/" ? "white" : "black"
             // }`}
           >
-            Navbar
+            BloomLand
           </h1>
           {/* <img src={logo} alt="LOGO" className="h-20 w-20 object-contain " /> */}
           {/* <Logo className="h-20 w-20 p-0 m-0" /> */}
