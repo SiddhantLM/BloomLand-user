@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Twitter, Instagram, Disc, X } from "lucide-react";
-import { ReactComponent as Whatsapp } from "../assets/Whatsapp.svg";
+import { ReactComponent as Whatsapp } from "../assets/whatsapp.svg";
 import { createTicket } from "../services/operations/ticket";
 import Navbar from "../components/home/Navbar";
 import Footer from "../components/home/Footer";
