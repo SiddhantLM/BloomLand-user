@@ -6,7 +6,7 @@ import vocal from "../../assets/vocal.png";
 import medium from "../../assets/medium.png";
 import elephant from "../../assets/elephantjournal.png";
 import authority from "../../assets/Authority-Magazine.png";
-import thrive from "../../assets/Thrive-global-Logo.png";
+import thrive from "../../assets/Thrive-Global-Logo.png";
 
 // Add this to your components folder
 const IconsList = () => {
