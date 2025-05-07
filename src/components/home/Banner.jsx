@@ -1,0 +1,45 @@
+import React from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "motion/react";
+
+const Banner = () => {
+  return (
+    <div className="relative w-full min-h-screen flex items-center justify-center">
+      {/* Content - Title and Description */}
+      <div className="flex flex-col justify-center items-center z-20 px-4 text-center">
+        <motion.h1
+          className="text-2xl md:text-4xl lg:text-4xl font-semibold mb-6 text-white z-50"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          Your Gateway to Holistic Health and Conscious Living.
+        </motion.h1>
+
+        <motion.p
+          className="text-white text-sm md:text-lg max-w-3xl mx-auto mb-3 z-50"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+        >
+          Curated Holistic healing travel experiences, conscious festivals, and
+          a global community for holistic healing and transformation.
+        </motion.p>
+
+        {/* Call to Action Button with Hover Animation */}
+        {/* <motion.button
+          className="mt-8 py-3 px-8 bg-[#E16B33] text-white rounded-full text-lg hover:bg-[#F9A26B] transition-colors"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Get Started
+        </motion.button> */}
+      </div>
+    </div>
+  );
+};
+
+export default Banner;

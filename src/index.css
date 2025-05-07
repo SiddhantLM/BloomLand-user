@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.leaf-decoration {
+  position: absolute;
+  opacity: 0.07;
+  z-index: -1;
+}
+
+.leaf-1 {
+  top: 100px;
+  left: 5%;
+  width: 150px;
+  transform: rotate(-20deg);
+}
+
+.leaf-2 {
+  bottom: 80px;
+  right: 5%;
+  width: 180px;
+  transform: rotate(15deg);
+}
+
+.holographic-card {
+  /* width: 300px;
+  height: 200px; */
+  /* background: #111; */
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  /* box-shadow: 0 0 10px #a9a9a9; */
+}
+
+.holographic-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* background: linear-gradient(0deg, transparent, transparent 30%, #e16b33); */
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.holographic-card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
