@@ -50,11 +50,11 @@ const Problem = () => {
     },
   ];
   return (
-    <div className="flex px-4 md:flex-row flex-col container items-center mx-auto w-full md:justify-between justify-center py-10 gap-4 pt-20">
+    <div className="flex px-4 md:flex-row flex-col container items-center mx-auto w-full md:justify-between justify-center py-2 gap-4 pt-10 md:pt-20">
       {content.map((item, index) => (
         <div
           key={index}
-          className="flex flex-col  justify-center items-center md:items-start max-w-md mx-auto md:mx-0 px-10 md:px-0 my-5 md:my-0"
+          className="flex flex-col  justify-center items-center md:items-start max-w-md mx-auto md:mx-0 px-10 md:px-0 my-2 md:my-0"
         >
           <img src={item.icon} className="h-1/3 w-1/3 object-cover" alt="" />
           <h1 className="mt-4 mb-4 text-xl text-[#E16B33] font-semibold">

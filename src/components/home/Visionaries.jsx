@@ -79,7 +79,7 @@ const RotatingVisionariesSection = () => {
   };
 
   return (
-    <div className="w-full py-16 bg-inherit">
+    <div className="w-full md:py-16 bg-inherit">
       <div className="text-center">
         <div className="mb-6 flex md:flex-row flex-col items-center justify-center h-fit">
           <p className="text-4xl font-semibold text-black tracking-wider  transform md:-translate-x-1/2">
@@ -94,7 +94,7 @@ const RotatingVisionariesSection = () => {
               {words.map((word, index) => (
                 <motion.div
                   key={word}
-                  className="word-item absolute w-64 text-center text-4xl tracking-wider ml-0 pl-0"
+                  className="word-item absolute md:w-64  text-center text-4xl tracking-wider ml-0 pl-0 transform -traslate-x-1/2"
                   initial={calculatePosition(index)}
                   animate={calculatePosition(index)}
                   transition={{
@@ -107,7 +107,9 @@ const RotatingVisionariesSection = () => {
                     backfaceVisibility: "hidden",
                   }}
                 >
-                  <span className={`opacity-100 font-semibold text-[#E16B33]`}>
+                  <span
+                    className={`opacity-100 font-semibold text-[#E16B33] md:text-start`}
+                  >
                     {word}
                   </span>
                 </motion.div>

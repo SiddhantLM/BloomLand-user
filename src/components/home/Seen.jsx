@@ -16,7 +16,7 @@ const Seen = () => {
         </h1>
       </div>
       <div
-        className={`w-full pt-20 flex mx-auto justify-center gap-10 container items-center bg-inherit`}
+        className={`w-full md:pt-20 flex mx-auto justify-center gap-10 container items-center bg-inherit`}
       >
         <div className={`flex-1 h-[1px] bg-[#AE7A62]`} />
         <div className="flex flex-col items-center justify-center">

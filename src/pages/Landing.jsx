@@ -60,21 +60,21 @@ const Landing = () => {
         <Navbar />
         <Banner />
         {/* <div className="h-24 bg-gradient-to-b from-transparent to-[#EFFFFC]"></div> */}
-        <div className="bg-gradient-to-b from-[#EFFFFC] to-white">
-          <SectionHeader subtitle={"Our Editions"} lineColor={"#3CA18F"} />
+        <div className="bg-gradient-to-b from-[#EFFFFC] to-white md:pt-0">
+          <SectionHeader subtitle={"Our Editions"} lineColor="bg-[#3CA18F]" />
           <Editions />
         </div>
         <div className="bg-white ">
           <SectionHeader
             subtitle={"5 Dimensions and Facts"}
             title={"Holistic Health Problems"}
-            lineColor={"#3CA18F"}
+            lineColor="bg-[#3CA18F]"
           />
           <Problem />
         </div>
 
-        <div className=" flex flex-col my-20">
-          <div className="  h-[200px] bg-gradient-to-b to-[#FFE8DE] from-transparent" />
+        <div className=" flex flex-col md:my-20 my-0">
+          <div className="  md:h-[150px] h-[50px] bg-gradient-to-b to-[#FFE8DE] from-transparent" />
           <div className="bg-gradient-to-b from-[#FFE8DE] to-white">
             <Seen />
           </div>

@@ -48,8 +48,8 @@ const Editions = () => {
           content.length > 0 &&
           content.map((item) => (
             <section className="relative flex items-center" key={item.id}>
-              <div className="container mx-auto px-6 py-24 md:py-10">
-                <div className="flex flex-col md:flex-row gap-12 holographic-card bg-white border border-[#3CA18F] ">
+              <div className="container mx-auto px-6 py-10 md:py-10">
+                <div className="flex flex-col md:flex-row md:gap-12 holographic-card bg-white border border-[#3CA18F] ">
                   <div className="w-full md:w-1/3">
                     <motion.div
                       className="rounded-lg overflow-hidden md:h-96"
@@ -65,7 +65,7 @@ const Editions = () => {
                     </motion.div>
                   </div>
 
-                  <div className="flex-1 p-10 max-h-full flex flex-col justify-between">
+                  <div className="flex-1 md:p-10 p-5 max-h-full flex flex-col justify-between">
                     <div>
                       <div className=" capitalize mb-6 text-[41px] font-medium text-[#E16B33] ">
                         {item.category} Edition
