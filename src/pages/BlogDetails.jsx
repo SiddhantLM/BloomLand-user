@@ -195,11 +195,13 @@ Happy coding!
                   key={item._id}
                   className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
-                  <img
-                    src={item.image}
-                    alt="React Components Deep Dive"
-                    className="w-full h-48 object-cover"
-                  />
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt="React Components Deep Dive"
+                      className="w-full h-48 object-cover"
+                    />
+                  )}
                   <div className="p-4">
                     <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
                     <p className="text-gray-600 mb-3">{item.subtitle}</p>

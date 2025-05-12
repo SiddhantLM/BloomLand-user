@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import HikerImg from "../assets/hiker.webp";
@@ -7,6 +8,7 @@ import Navbar from "../components/home/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { joinEvent, sendRequest } from "../services/operations/event";
 import { setSelected } from "../store/slices/authSlice";
+import Card from "../components/event/Card";
 
 const EventsPage = () => {
   const location = useLocation();
@@ -125,7 +127,8 @@ const EventsPage = () => {
         </div>
       </section>
 
-      <section className="min-h-screen items-center justify-center">
+      <div className="  md:h-[150px] h-[50px] " />
+      <section className="min-h-screen items-center justify-center ">
         <div className="container mx-auto py-20">
           <h1 className="[word-spacing:7px] mt-20 mb-6 text-[#E16B33] font-bold text-4xl md:px-1 px-5 underline-offset-12 underline decoration-[#E16B33]">
             All{" "}
@@ -138,40 +141,43 @@ const EventsPage = () => {
             </span>
             Events
           </h1>
-          <div className="flex flex-col gap-16  md:px-0 px-5 py-10 mx-auto ">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-16 my-5  md:px-0 px-5 py-10 container w-fit">
             {events &&
               events.map((event) => (
-                <div
-                  key={event.id}
-                  className=" w-full h-52 flex py-8 px-5 rounded-lg hover:scale-101 duration-300 holographic-card  bg-white"
-                >
-                  {/* <div className=""> */}
-                  <img
-                    src={HikerImg}
-                    className="h-full object-cover rounded-lg hover:touch-pinch-zoom duration-300"
-                  />
-                  {/* </div> */}
-                  <div className="px-5">
-                    <h1 className="my-3 text-[#E16B33] text-xl font-semibold">
-                      {event.title}
-                    </h1>
-                    <p
-                      className="mb-3 text- text-sm leading-6"
-                      dangerouslySetInnerHTML={{ __html: event.description }}
-                    ></p>
-                    <button
-                      onClick={() => handleRequest(event._id)}
-                      className="bg-[#E16B33] px-4 py-1 text-white rounded-lg text-sm"
-                    >
-                      {isAllowed
-                        ? isApproved(event._id)
-                          ? "Joined"
-                          : "Join Now"
-                        : requestSent(event._id)
-                        ? "Invite Requested"
-                        : "Request Invite"}
-                    </button>
-                  </div>
+                // <div
+                //   key={event.id}
+                //   className=" w-full h-52 flex py-8 px-5 rounded-lg hover:scale-101 duration-300 holographic-card  bg-white"
+                // >
+                //   {/* <div className=""> */}
+                //   <img
+                //     src={HikerImg}
+                //     className="h-full object-cover rounded-lg hover:touch-pinch-zoom duration-300"
+                //   />
+                //   {/* </div> */}
+                //   <div className="px-5">
+                //     <h1 className="my-3 text-[#E16B33] text-xl font-semibold">
+                //       {event.title}
+                //     </h1>
+                //     <p
+                //       className="mb-3 text- text-sm leading-6"
+                //       dangerouslySetInnerHTML={{ __html: event.description }}
+                //     ></p>
+                //     <button
+                //       onClick={() => handleRequest(event._id)}
+                //       className="bg-[#E16B33] px-4 py-1 text-white rounded-lg text-sm"
+                //     >
+                //       {isAllowed
+                //         ? isApproved(event._id)
+                //           ? "Joined"
+                //           : "Join Now"
+                //         : requestSent(event._id)
+                //         ? "Invite Requested"
+                //         : "Request Invite"}
+                //     </button>
+                //   </div>
+                // </div>
+                <div className={`lg:mx-10 px-2`}>
+                  <Card key={event._id} event={event} />
                 </div>
               ))}
           </div>

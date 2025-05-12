@@ -19,6 +19,8 @@ import Ticket from "./components/Ticket";
 import EventDetails from "./pages/EventDetails";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
+import AboutUs from "./pages/AboutUs";
+import Community from "./pages/Community";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +56,8 @@ function App() {
         <Route path="/editions/10x" element={<EventsPage />} />
         <Route path="/editions/100x" element={<EventsPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/ticket" element={<Ticket />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/load" element={<Loader />} />

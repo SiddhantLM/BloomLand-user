@@ -15,6 +15,7 @@ export const eventEndpoints = {
   FETCH_EVENTS: `${API_URL}/event/events`,
   JOIN_EVENT: `${API_URL}/event_requests/join`,
   SEND_REQUEST: `${API_URL}/event_requests/send`,
+  WITHDRAW: `${API_URL}/event_requests/withdraw`,
 };
 
 export const ticketEndpoints = {
@@ -34,4 +35,8 @@ export const blogEndpoints = {
 
 export const newsletterEndpoints = {
   ADD: API_URL + "/newsletter/add",
+};
+
+export const communityEndpoints = {
+  JOIN: API_URL + "/community/join",
 };

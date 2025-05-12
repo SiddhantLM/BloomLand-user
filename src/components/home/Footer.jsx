@@ -1,16 +1,17 @@
 import React from "react";
 import { Facebook, Instagram, Github, Youtube } from "lucide-react";
 import Newsletter from "../common/Newsletter";
+import { format } from "date-fns";
 
 export default function Footer() {
   return (
     <footer className="py-12 border-t border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 gap-8">
           {/* Solutions Column */}
           <div>
             <h3 className="font-medium text-gray-900 mb-4">Solutions</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               <li>
                 <a href="#" className="text-gray-600 hover:text-[#e16b33]">
                   Marketing
@@ -42,7 +43,7 @@ export default function Footer() {
           {/* Support Column */}
           <div>
             <h3 className="font-medium text-gray-900 mb-4">Support</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               <li>
                 <a href="#" className="text-gray-600 hover:text-[#e16b33]">
                   Submit ticket
@@ -64,7 +65,7 @@ export default function Footer() {
           {/* Company Column */}
           <div>
             <h3 className="font-medium text-gray-900 mb-4">Company</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               <li>
                 <a href="#" className="text-gray-600 hover:text-[#e16b33]">
                   About
@@ -89,7 +90,7 @@ export default function Footer() {
           </div>
 
           {/* Legal Column */}
-          <div>
+          {/* <div>
             <h3 className="font-medium text-gray-900 mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
@@ -108,10 +109,10 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Newsletter Column */}
-          <div>
+          <div className="w-11/12 col-span-2">
             {/* <h3 className="font-medium text-gray-900 mb-4">
               Subscribe to our newsletter
             </h3>
@@ -147,7 +148,8 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-sm">
-            © 2024 Your Company, Inc. All rights reserved.
+            © {format(new Date(Date.now()), "yyyy")} Antinoob Solutions, All
+            rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-500 hover:text-[#e16b33]">

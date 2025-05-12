@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import illustration from "../assets/illustration.png";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { submitDetails } from "../services/operations/auth";
+import { logout } from "../store/slices/authSlice";
 // import { useEffect } from "react";
 // import { useEffect } from "react";
 
@@ -24,8 +25,28 @@ export default function Details() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token } = useSelector((state) => state.auth);
+  const { token, isValid, detailsSubmitted } = useSelector(
+    (state) => state.auth
+  );
   const { selected } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const checkIsValid = () => {
+      if (!token) {
+        navigate("/auth/login");
+        return;
+      }
+      if (!isValid) {
+        dispatch(logout());
+        navigate("/auth/login");
+        return;
+      }
+      if (detailsSubmitted) {
+        navigate("/dashboard");
+      }
+    };
+    checkIsValid();
+  }, [token, isValid, detailsSubmitted]);
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -81,7 +102,7 @@ export default function Details() {
 
   return (
     <div className="flex min-h-screen relative overflow-x-hidden w-full overflow-y-auto">
-      <div className="w-1/2 md:fixed hidden md:block top-0 left-0 h-screen">
+      <div className="w-1/2 lg:fixed hidden lg:block top-0 left-0 h-screen">
         <img
           src={illustration}
           alt=""
@@ -110,14 +131,14 @@ export default function Details() {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-10">
             {/* Header */}
             <div className="relative pt-10 pb-5 text-center">
-              <div className="absolute top-0 left-0 w-full h-4 bg-green-600"></div>
-              <div className="w-20 h-20 rounded-full bg-amber-50 border-2 border-green-600 mx-auto mb-5 flex items-center justify-center text-green-700 font-medium">
+              <div className="absolute top-0 left-0 w-full h-4 bg-[#E16B33]"></div>
+              <div className="w-20 h-20 rounded-full bg-amber-50 border-2 border-[#E16B33] mx-auto mb-5 flex items-center justify-center text-green-700 font-medium">
                 LOGO
               </div>
               <h1 className="text-3xl font-serif text-gray-800 mb-4">
                 Personal Growth Journey
               </h1>
-              <p className="text-base text-green-700 max-w-xl mx-auto leading-relaxed">
+              <p className="text-base text-[#E16B33] max-w-xl mx-auto leading-relaxed">
                 Embark on a transformative path to discover your true potential
                 and nurture your wellbeing through our guided experience.
               </p>
@@ -128,13 +149,13 @@ export default function Details() {
             <div className="px-10 py-6">
               <div className="relative w-full max-w-lg mx-auto">
                 <div className="h-2 bg-gray-100 rounded-full">
-                  <div className="h-2 bg-green-600 rounded-full w-1/3"></div>
+                  <div className="h-2 bg-[#E16B33] rounded-full w-1/3"></div>
                 </div>
                 <div className="absolute top-0 left-0 transform -translate-y-1/2 w-full flex justify-between">
-                  <div className="w-5 h-5 rounded-full bg-green-700 border-2 border-green-700"></div>
-                  <div className="w-5 h-5 rounded-full bg-green-600 border-2 border-green-600"></div>
-                  <div className="w-5 h-5 rounded-full bg-white border-2 border-green-600"></div>
-                  <div className="w-5 h-5 rounded-full bg-white border-2 border-green-600"></div>
+                  <div className="w-5 h-5 rounded-full bg-[#E16B33] border-2 border-[#E16B33]"></div>
+                  <div className="w-5 h-5 rounded-full bg-[#E16B33] border-2 border-[#E16B33]"></div>
+                  <div className="w-5 h-5 rounded-full bg-white border-2 border-[#E16B33]"></div>
+                  <div className="w-5 h-5 rounded-full bg-white border-2 border-[#E16B33]"></div>
                 </div>
               </div>
             </div>
@@ -151,7 +172,7 @@ export default function Details() {
                 <div className="mb-6">
                   <label
                     htmlFor="fullName"
-                    className="block mb-2 text-sm text-green-700"
+                    className="block mb-2 text-sm text-[#E16B33]"
                   >
                     Full Name
                   </label>
@@ -162,14 +183,14 @@ export default function Details() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your full name"
-                    className="w-full px-4 py-3 border-2 border-green-100 rounded-lg focus:outline-none focus:border-green-600 focus:ring focus:ring-green-100"
+                    className="w-full px-4 py-3 border-2 border-orange-100 rounded-lg focus:outline-none focus:border-[#E16B33] focus:ring focus:ring-[#F9A26B]"
                   />
                 </div>
 
                 <div className="mb-6">
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm text-green-700"
+                    className="block mb-2 text-sm text-[#E16B33]"
                   >
                     Email Address
                   </label>
@@ -180,14 +201,14 @@ export default function Details() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
-                    className="w-full px-4 py-3 border-2 border-green-100 rounded-lg focus:outline-none focus:border-green-600 focus:ring focus:ring-green-100"
+                    className="w-full px-4 py-3 border-2 border-orange-100 rounded-lg focus:outline-none focus:border-[#E16B33] focus:ring focus:ring-[#F9A26B]"
                   />
                 </div>
 
                 <div className="mb-6">
                   <label
                     htmlFor="mobile"
-                    className="block mb-2 text-sm text-green-700"
+                    className="block mb-2 text-sm text-[#E16B33]"
                   >
                     Mobile Number
                   </label>
@@ -198,14 +219,14 @@ export default function Details() {
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
                     placeholder="Your mobile number"
-                    className="w-full px-4 py-3 border-2 border-green-100 rounded-lg focus:outline-none focus:border-green-600 focus:ring focus:ring-green-100"
+                    className="w-full px-4 py-3 border-2 border-orange-100 rounded-lg focus:outline-none focus:border-[#E16B33] focus:ring focus:ring-[#F9A26B]"
                   />
                 </div>
 
                 <div className="mb-6">
                   <label
                     htmlFor="dob"
-                    className="block mb-2 text-sm text-green-700"
+                    className="block mb-2 text-sm text-[#E16B33]"
                   >
                     Date of Birth
                   </label>
@@ -216,7 +237,7 @@ export default function Details() {
                       name="dob"
                       value={dob}
                       onChange={(e) => setDob(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-green-100 rounded-lg focus:outline-none focus:border-green-600 focus:ring focus:ring-green-100"
+                      className="w-full px-4 py-3 border-2 border-orange-100 rounded-lg focus:outline-none focus:border-[#E16B33] focus:ring focus:ring-[#F9A26B]"
                     />
                   </div>
                 </div>
@@ -232,7 +253,7 @@ export default function Details() {
                 <div className="mb-6">
                   <label
                     htmlFor="journey"
-                    className="block mb-2 text-sm text-green-700"
+                    className="block mb-2 text-sm text-[#E16B33]"
                   >
                     What best describes your current journey?
                   </label>
@@ -241,7 +262,7 @@ export default function Details() {
                     name="journey"
                     value={journey}
                     onChange={(e) => setJourney(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-green-100 rounded-lg focus:outline-none focus:border-green-600 focus:ring focus:ring-green-100"
+                    className="w-full px-4 py-3 border-2 border-orange-100 rounded-lg focus:outline-none focus:border-[#E16B33] focus:ring focus:ring-[#F9A26B]"
                   >
                     <option value="" disabled>
                       Select an option
@@ -255,7 +276,7 @@ export default function Details() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     What has been the most beautiful experience you've had for
                     your personal growth so far?
                   </label>
@@ -313,13 +334,13 @@ export default function Details() {
                         <div
                           className={`border-2 rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                             isChecked("experience", item.value)
-                              ? "bg-white border-green-600"
-                              : "bg-white border-green-600"
+                              ? "bg-white border-[#E16B33]"
+                              : "bg-white border-orange-100"
                           }`}
                         >
                           {isChecked("experience", item.value) && (
                             <svg
-                              className="fill-current w-3 h-3 text-green-600 pointer-events-none"
+                              className="fill-current w-3 h-3 text-[#E16B33] pointer-events-none"
                               viewBox="0 0 20 20"
                             >
                               <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -338,7 +359,7 @@ export default function Details() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     What made you realize it's time to adapt or shift something
                     within you?
                   </label>
@@ -396,13 +417,13 @@ export default function Details() {
                         <div
                           className={`border-2 rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                             isChecked("reason", item.value)
-                              ? "bg-white border-green-600 accent-green-600"
-                              : "bg-white border-green-600"
+                              ? "bg-white border-[#E16B33] accent-green-600"
+                              : "bg-white border-orange-100"
                           }`}
                         >
                           {isChecked("reason", item.value) && (
                             <svg
-                              className="fill-current w-3 h-3 text-green-600 pointer-events-none"
+                              className="fill-current w-3 h-3 text-[#E16B33] pointer-events-none"
                               viewBox="0 0 20 20"
                             >
                               <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -438,13 +459,13 @@ export default function Details() {
                       <div
                         className={`border-2 rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                           isChecked("reason", "other")
-                            ? "bg-white border-green-600"
-                            : "bg-white border-green-600"
+                            ? "bg-white border-[#E16B33]"
+                            : "bg-white border-orange-100"
                         }`}
                       >
                         {isChecked("reason", "other") && (
                           <svg
-                            className="fill-current w-3 h-3 text-green-600 pointer-events-none"
+                            className="fill-current w-3 h-3 text-[#E16B33] pointer-events-none"
                             viewBox="0 0 20 20"
                           >
                             <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -480,7 +501,7 @@ export default function Details() {
                 </h2>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     What areas of your life are calling for the most love and
                     attention right now?
                   </label>
@@ -534,13 +555,13 @@ export default function Details() {
                         <div
                           className={`border-2 rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                             isChecked("area", item.value)
-                              ? "bg-white border-green-600"
-                              : "bg-white border-green-600"
+                              ? "bg-white border-[#E16B33]"
+                              : "bg-white border-orange-100"
                           }`}
                         >
                           {isChecked("area", item.value) && (
                             <svg
-                              className="fill-current w-3 h-3 text-green-600 pointer-events-none"
+                              className="fill-current w-3 h-3 text-[#E16B33] pointer-events-none"
                               viewBox="0 0 20 20"
                             >
                               <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -559,7 +580,7 @@ export default function Details() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     Which statement best reflects your present state?
                   </label>
                   <div className="mt-3 space-y-3">
@@ -593,12 +614,12 @@ export default function Details() {
                         <div
                           className={`border-2 rounded-full h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                             state === item.value
-                              ? "border-green-600"
-                              : "border-green-600"
+                              ? "border-[#E16B33]"
+                              : "border-orange-100"
                           }`}
                         >
                           {state === item.value && (
-                            <div className="rounded-full h-2.5 w-2.5 bg-green-600"></div>
+                            <div className="rounded-full h-2.5 w-2.5 bg-[#E16B33]"></div>
                           )}
                         </div>
                         <label
@@ -613,7 +634,7 @@ export default function Details() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     What are you most hoping to bloom into through this journey?
                   </label>
                   <div className="mt-3 space-y-3">
@@ -665,13 +686,13 @@ export default function Details() {
                         <div
                           className={`border-2 rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                             isChecked("bloom", item.value)
-                              ? "bg-white border-green-600"
-                              : "bg-white border-green-600"
+                              ? "bg-white border-[#E16B33]"
+                              : "bg-white border-orange-100"
                           }`}
                         >
                           {isChecked("bloom", item.value) && (
                             <svg
-                              className="fill-current w-3 h-3 text-green-600 pointer-events-none"
+                              className="fill-current w-3 h-3 text-[#E16B33] pointer-events-none"
                               viewBox="0 0 20 20"
                             >
                               <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -690,7 +711,7 @@ export default function Details() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     How ready are you to invest time, energy, and intention into
                     yourself during this edition?
                   </label>
@@ -721,12 +742,12 @@ export default function Details() {
                         <div
                           className={`border-2 rounded-full h-5 w-5 flex flex-shrink-0 justify-center items-center mr-3 ${
                             ready === item.value
-                              ? "border-green-600"
-                              : "border-green-600"
+                              ? "border-[#E16B33]"
+                              : "border-orange-100"
                           }`}
                         >
                           {ready === item.value && (
-                            <div className="rounded-full h-2.5 w-2.5 bg-green-600"></div>
+                            <div className="rounded-full h-2.5 w-2.5 bg-[#E16B33]"></div>
                           )}
                         </div>
                         <label
@@ -741,7 +762,7 @@ export default function Details() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block mb-2 text-sm text-green-700">
+                  <label className="block mb-2 text-sm text-[#E16B33]">
                     Is there anything you'd like us to know to support your
                     journey into this Edition?
                   </label>
@@ -752,7 +773,7 @@ export default function Details() {
                     onChange={(e) => setNotes(e.target.value)}
                     rows="4"
                     placeholder="Share any additional thoughts or questions (optional)"
-                    className="w-full px-4 py-3 border-2 border-green-100 rounded-lg focus:outline-none focus:border-green-600 focus:ring focus:ring-green-100"
+                    className="w-full px-4 py-3 border-2 border-orange-100 rounded-lg focus:outline-none focus:border-[#E16B33] focus:ring focus:ring-[#F9A26B]"
                   ></textarea>
                 </div>
               </div>
@@ -760,7 +781,7 @@ export default function Details() {
               <div className="text-center pt-4 pb-8">
                 <button
                   type="submit"
-                  className="px-10 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 shadow-md transition-all text-lg font-medium"
+                  className="px-10 py-4 bg-[#E16B33] text-white rounded-full hover:bg-[#F9A26B] focus:outline-none focus:ring-2 focus:ring-[#F9A26B] focus:ring-offset-2 shadow-md transition-all text-lg font-medium"
                 >
                   Begin Your Journey
                 </button>

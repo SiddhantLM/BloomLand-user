@@ -2,11 +2,31 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../store/slices/userSlice";
 import PaymentCard from "../components/dashboard/PaymentCard";
+import { useNavigate } from "react-router";
 
 const Dashboard = () => {
-  const { token } = useSelector((state) => state.auth);
+  const { token, isValid, detailsSubmitted } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
   const { approved, events } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigate("/auth/login");
+      return;
+    }
+    if (!isValid) {
+      navigate("/auth/login");
+      return;
+    }
+
+    if (!detailsSubmitted) {
+      navigate("/details");
+      return;
+    }
+  }, [token, isValid, detailsSubmitted]);
+
   useEffect(() => {
     dispatch(fetchUser({ token }));
   }, [dispatch, token]);

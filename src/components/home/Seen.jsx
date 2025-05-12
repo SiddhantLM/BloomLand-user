@@ -8,10 +8,10 @@ const Seen = () => {
   return (
     <div className="flex flex-col container mx-auto items-center">
       <div className="my-10">
-        <h1 className="text-4xl my-5 text-[#E16B33] text-center font-semibold">
+        <h1 className="md:text-4xl text-2xl my-5 text-[#E16B33] text-center font-semibold">
           BloomLand is a global wellness movement
         </h1>
-        <h1 className="text-2xl text-center">
+        <h1 className="md:text-2xl text-lg sm:w-3/4 mx-auto text-center">
           BloomLand is a global wellness movement
         </h1>
       </div>

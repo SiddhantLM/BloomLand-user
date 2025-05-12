@@ -76,7 +76,6 @@ const BlogSection = () => {
     dispatch(fetchBlogs());
   }, [dispatch]);
   const { blogs } = useSelector((state) => state.event);
-  console.log("articles", blogs);
   return (
     <div className="container mx-auto py-10 w-full flex ">
       <div className="w-full">

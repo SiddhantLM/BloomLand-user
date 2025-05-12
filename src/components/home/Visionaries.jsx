@@ -36,6 +36,7 @@ const RotatingVisionariesSection = () => {
 
   // Calculate positions for each word based on currentIndex
   const calculatePosition = (index) => {
+    const isMobile = window.innerWidth <= 768;
     // Calculate relative position (0 = current, 1 = next, 2 = next+1)
     let position = (index - currentIndex + words.length) % words.length;
 
@@ -55,14 +56,14 @@ const RotatingVisionariesSection = () => {
       opacity = 1;
     } else if (position === 1) {
       // Next word (below)
-      yTranslation = 50;
+      yTranslation = isMobile ? 30 : 50;
       xRotation = -30;
       scale = 0.85;
       zIndex = 20;
       opacity = 0.3;
     } else {
       // Previous word (above)
-      yTranslation = -50;
+      yTranslation = isMobile ? -30 : -50;
       xRotation = 30;
       scale = 0.85;
       zIndex = 10;
@@ -79,22 +80,22 @@ const RotatingVisionariesSection = () => {
   };
 
   return (
-    <div className="w-full md:py-16 bg-inherit">
+    <div className="w-full md:py-16 bg-inherit pb-8">
       <div className="text-center">
         <div className="mb-6 flex md:flex-row flex-col items-center justify-center h-fit">
-          <p className="text-4xl font-semibold text-black tracking-wider  transform md:-translate-x-1/2">
+          <p className="md:text-4xl text-2xl font-semibold text-black tracking-wider  transform md:-translate-x-1/2">
             We bring together
           </p>
           <div className="pl-0 ml-0">
             <div
               ref={containerRef}
-              className="relative h-20 flex items-center justify-center my-10"
+              className="relative md:h-20 h-10 flex items-center justify-center my-10"
               style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
             >
               {words.map((word, index) => (
                 <motion.div
                   key={word}
-                  className="word-item absolute md:w-64  text-center text-4xl tracking-wider ml-0 pl-0 transform -traslate-x-1/2"
+                  className="word-item absolute md:w-64  text-center md:text-4xl text-2xl tracking-wider ml-0 pl-0 transform -traslate-x-1/2"
                   initial={calculatePosition(index)}
                   animate={calculatePosition(index)}
                   transition={{
@@ -118,7 +119,7 @@ const RotatingVisionariesSection = () => {
           </div>
         </div>
       </div>
-      <p className="text-lg text-center max-w-2xl mx-auto text-black mt-8">
+      <p className="md:text-lg text-base text-center max-w-2xl mx-auto text-black ">
         with the world's finest healers, guides, and leaders to create journeys
         of deep renewal, connection, and expansion
       </p>

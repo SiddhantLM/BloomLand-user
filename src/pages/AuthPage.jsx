@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Illustation from "../assets/illustration.png";
 import Form from "../components/Form";
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const AuthPage = () => {
+  const { isValid, token, detailsSubmitted } = useSelector(
+    (state) => state.auth
+  );
+  const navigate = useNavigate();
+  useEffect(() => {
+    const checkIsValid = () => {
+      if (token && isValid) {
+        if (detailsSubmitted) {
+          navigate("/dashboard");
+        } else {
+          navigate("/details");
+        }
+      }
+    };
+
+    checkIsValid();
+  }, [token, isValid]);
+
   return (
     <div className="flex w-full h-screen">
       <div className="md:w-[50%] hidden md:flex max-h-screen">

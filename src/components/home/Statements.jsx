@@ -78,8 +78,8 @@ const Statements = () => {
   // ref={containerRef}
 
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="text-xl font-semibold  pl-3">
+    <div className="w-full flex flex-col items-center justify-center mb-5">
+      <h1 className="text-xl font-semibold  text-center">
         Statements from our Bloom leaders and Bloomers
       </h1>
       <div className="relative w-full overflow-hidden">
@@ -88,11 +88,11 @@ const Statements = () => {
             {allContent.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 max-w-xs p-6 bg-white rounded-3xl shadow-sm"
+                className="flex-shrink-0 md:max-w-xs max-w-3xs p-6 bg-white rounded-3xl shadow-sm"
                 style={{ backgroundColor: "#F9FEFF" }}
               >
                 <div className="flex items-center mb-7">
-                  <div className="w-12 h-12 bg-gray-500 rounded-full mr-3 overflow-hidden">
+                  <div className="md:w-12 md:h-12 h-8 w-8 bg-gray-500 rounded-full mr-3 overflow-hidden">
                     <img
                       src={item.image}
                       alt={`${item.name}'s profile`}
@@ -100,22 +100,22 @@ const Statements = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="md:text-lg text-[14px] font-semibold text-gray-900">
                       {item.name}
                     </h3>
                     <p className="text-sm">
-                      <span className="text-[#F7751E] text-xs">
+                      <span className="text-[#F7751E] md:text-xs text-[10px]">
                         {item.position}
                       </span>
                       <span className="mx-1">•</span>
-                      <span className="text-[#F7751E] font-semibold text-xs">
+                      <span className="text-[#F7751E] font-semibold md:text-xs text-[10px]">
                         {item.company}
                       </span>
                     </p>
                   </div>
                 </div>
 
-                <p className="text-black font-semibold leading-relaxed">
+                <p className="text-black font-semibold leading-relaxed md:text-base text-sm">
                   {item.statement}
                 </p>
               </div>

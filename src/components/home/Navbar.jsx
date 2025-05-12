@@ -146,7 +146,7 @@ const Navbar = () => {
       transition={{ duration: 0.6 }}
     >
       <div
-        className={`container mx-auto px-4 flex items-center justify-between `}
+        className={`container mx-auto px-4 flex items-center justify-between`}
       >
         {/* Logo/Brand */}
         <motion.div
@@ -156,7 +156,7 @@ const Navbar = () => {
           transition={{ duration: 0.5 }}
         >
           <h1
-            className={`text-2xl font-bold text-white
+            className={`md:text-2xl text-lg font-bold text-white
             //   scrolled || window.location.pathname === "/" ? "white" : "black"
             // }`}
           >
@@ -167,7 +167,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Mobile Menu Button - only visible on small screens */}
-        <div className="md:hidden z-50">
+        <div className="lg:hidden z-50">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-white focus:outline-none"
@@ -200,7 +200,7 @@ const Navbar = () => {
 
         {/* Navigation items - centered (desktop) */}
         <motion.div
-          className="flex-1 hidden md:flex justify-center"
+          className="flex-1 hidden lg:flex justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -469,7 +469,7 @@ const Navbar = () => {
 
         {/* Button (desktop) */}
         <motion.div
-          className="flex-1 hidden md:flex justify-end"
+          className="flex-1 hidden lg:flex justify-end"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -492,7 +492,7 @@ const Navbar = () => {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="fixed inset-0 bg-black/95 flex flex-col items-center justify-center md:hidden z-[1000]"
+              className="fixed inset-0 bg-black/95 flex flex-col items-center justify-center lg:hidden z-[1000]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { paymentEndpoints } from "../apis";
+import { toast } from "react-toastify";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -50,7 +51,7 @@ export async function PayEvent({ token, eventId, user_details }) {
     );
 
     // Opening the Razorpay SDK
-    console.log("KEY ----------->", import.meta.env.VITE_RAZORPAY_KEY);
+    // console.log("KEY ----------->", import.meta.env.VITE_RAZORPAY_KEY);
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY,
       currency: orderResponse.data.data.currency,
@@ -67,9 +68,13 @@ export async function PayEvent({ token, eventId, user_details }) {
         sendPaymentSuccessEmail(
           response,
           orderResponse.data.data.amount,
+          token,
+          eventId
+        );
+        verifyPayment(
+          { ...response, eventId, amount: orderResponse.data.data.amount },
           token
         );
-        verifyPayment({ ...response, eventId }, token);
       },
     };
     const paymentObject = new window.Razorpay(options);
@@ -80,6 +85,7 @@ export async function PayEvent({ token, eventId, user_details }) {
     });
   } catch (error) {
     console.log("PAYMENT API ERROR............", error);
+    toast.error("Failed to initiate payment");
   }
 }
 
@@ -95,25 +101,29 @@ async function verifyPayment(bodyData, token) {
       }
     );
 
-    console.log("VERIFY PAYMENT RESPONSE FROM BACKEND............", response);
-
-    if (!response.data.success) {
-      throw new Error(response.data.message);
+    if (!response) {
+      toast.error("error verifying payment");
+      throw new Error("Error verifying payment");
     }
+
+    toast.success("Transaction completed successfully");
   } catch (error) {
     console.log("PAYMENT VERIFY ERROR............", error);
+    toast.error("Error processing your payment");
   }
 }
 
 // Send the Payment Success Email
-async function sendPaymentSuccessEmail(response, amount, token) {
+const sendPaymentSuccessEmail = async (response, amount, token, eventId) => {
   try {
+    // console.log("response", response, "amount", amount, "token", token);
     await axios.post(
       paymentEndpoints.SEND_PAYMENT_SUCCESS_EMAIL_API,
       {
         orderId: response.razorpay_order_id,
         paymentId: response.razorpay_payment_id,
-        amount,
+        amount: amount,
+        eventId: eventId,
       },
       {
         headers: {
@@ -124,4 +134,4 @@ async function sendPaymentSuccessEmail(response, amount, token) {
   } catch (error) {
     console.log("PAYMENT SUCCESS EMAIL ERROR............", error);
   }
-}
+};

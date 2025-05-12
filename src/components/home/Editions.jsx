@@ -67,10 +67,10 @@ const Editions = () => {
 
                   <div className="flex-1 md:p-10 p-5 max-h-full flex flex-col justify-between">
                     <div>
-                      <div className=" capitalize mb-6 text-[41px] font-medium text-[#E16B33] ">
+                      <div className=" capitalize mb-6 md:text-[41px] text-3xl font-medium text-[#E16B33] ">
                         {item.category} Edition
                       </div>
-                      <h2 className="text-xl md:text-[25px] font-medium text-black ">
+                      <h2 className="text-[18px] md:text-[25px] font-medium text-black mb-4">
                         {item.title}
                       </h2>
                       <p className="text-black md:text-[20px] font-light mb-8">
@@ -78,7 +78,7 @@ const Editions = () => {
                       </p>
                     </div>
                     <motion.button
-                      className="px-6 py-3 w-fit text-[#E16B33] text-xl font-semibold flex gap-2 items-center-safe p-10 "
+                      className=" w-fit text-[#E16B33] md:text-xl text-lg font-semibold flex gap-1 items-center-safe  "
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => {
@@ -97,6 +97,7 @@ const Editions = () => {
                     >
                       Join Edition
                       <ArrowRight className="arrow-animation" />
+                      {/* <span className="arrow-animation">→</span> */}
                     </motion.button>
                   </div>
                 </div>

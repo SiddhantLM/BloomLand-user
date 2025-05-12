@@ -40,6 +40,28 @@ export const joinEvent = ({ token, eventId }) => {
   };
 };
 
+export const withdrawRequest = ({ token, eventId }) => {
+  return async (dispatch) => {
+    try {
+      await axios.post(
+        eventEndpoints.WITHDRAW,
+        { eventId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success("Withdrew successfully");
+      dispatch(fetchUser({ token }));
+    } catch (error) {
+      console.log(error);
+      toast.error("Error while withdrawing");
+    }
+  };
+};
+
 export const fetchBlogById = async ({ blogId }) => {
   try {
     const response = await axios.get(blogEndpoints.FETCH_ONE + "/" + blogId);

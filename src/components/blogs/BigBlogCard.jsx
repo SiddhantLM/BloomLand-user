@@ -14,14 +14,14 @@ export default function BigBlogCard({ articles }) {
           <div
             key={article.id}
             onClick={() => navigate(`/blogs/${article._id}`)}
-            className="bg-white rounded-lg  overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
+            className="bg-white rounded-lg  overflow-hidden shadow-lg transition-transform duration-300 group"
           >
             {article.image && (
               <div className="h-64 overflow-hidden">
                 <img
                   src={article.image}
                   alt="Blog Image"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover aspect-square group-hover:scale-110 transition duration-500 ease-in-out"
                 />
               </div>
             )}

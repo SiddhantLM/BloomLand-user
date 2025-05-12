@@ -65,18 +65,18 @@ const IconsList = () => {
     <div className="w-full bg-inherit md:py-8 overflow-hidden">
       <div className="container mx-auto">
         <div className="relative w-full overflow-hidden">
-          <div className="w-full relative my-20">
+          <div className="w-full relative my-10">
             <div className="animate-slide flex w-max">
               {allLogos.map((logo, index) => (
                 <div
                   key={`${logo.id}-${index}`}
-                  className="flex-shrink-0 mx-8 px-0 py-0 bg-inherit rounded-lg transition-all duration-300 hover:scale-110"
+                  className="flex-shrink-0 md:mx-8 mx-0  px-0 py-0 bg-inherit rounded-lg transition-all duration-300 hover:scale-110"
                   style={{ width: "160px" }}
                 >
                   <img
                     src={logo.imgSrc}
                     alt={logo.name}
-                    className="w-full h-24 object-contain"
+                    className="w-24 md:w-full md:h-24 h-12 object-contain"
                   />
                 </div>
               ))}
