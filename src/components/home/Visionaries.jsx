@@ -119,7 +119,7 @@ const RotatingVisionariesSection = () => {
           </div>
         </div>
       </div>
-      <p className="md:text-lg text-base text-center max-w-2xl mx-auto text-black ">
+      <p className="md:text-lg text-base text-center max-w-2xl mx-auto text-black px-4">
         with the world's finest healers, guides, and leaders to create journeys
         of deep renewal, connection, and expansion
       </p>

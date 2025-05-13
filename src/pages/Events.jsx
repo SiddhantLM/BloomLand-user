@@ -9,8 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { joinEvent, sendRequest } from "../services/operations/event";
 import { setSelected } from "../store/slices/authSlice";
 import Card from "../components/event/Card";
+import Banner from "../assets/banner.png";
+import SectionHeader from "../components/common/SectionHeader";
+import Footer from "../components/home/Footer";
+import GutHealth from "../assets/gut-health.png";
+import Expect from "../components/event/Expect";
+import Faq from "../components/about/Faq";
+import Socials from "../components/about/Socials";
 
 const EventsPage = () => {
+  console.log(GutHealth);
   const location = useLocation();
   const [edition, setEdition] = useState(null);
   const [isAllowed, setIsAllowed] = useState(false);
@@ -42,6 +50,116 @@ const EventsPage = () => {
   useEffect(() => {
     setEvents(Event.events.filter((e) => e.category === edition));
   }, [Event, edition]);
+
+  const editionsData = {
+    day0: {
+      heading: "Day 0",
+      description:
+        "The Day-0 Edition is your first step into the world of BloomLand, offering a fun, hands-on experience for anyone curious about wellness or in need of a quick reset. This isn’t your average wellness workshop — it’s designed to help you reconnect with your body, mind, and soul in a supportive community setting. Whether you're just beginning your wellness journey or simply looking for a boost, this edition will leave you feeling lighter, energized, and ready to take the next step",
+      duration: "3 - 4 Hours",
+      perfect: "First-time explorers of holistic health",
+      expect: [
+        {
+          id: 1,
+          Icon: GutHealth,
+          title: "Meditation for Clarity",
+          description: "Guided meditation to clear your mind",
+        },
+        {
+          id: 2,
+          Icon: GutHealth,
+          title: "Energy Healing for Rejuvenation",
+          description: "Energy healing to feel recharged",
+        },
+        {
+          id: 3,
+          Icon: GutHealth,
+          title: "Holistic Nutrition Tips",
+          description: "Holistic nutrition tips to fuel your body",
+        },
+        {
+          id: 4,
+          Icon: GutHealth,
+          title: "Connecting with Like-Minded Souls",
+          description: "Community connection with like-minded souls",
+        },
+      ],
+    },
+    "10x": {
+      heading: "10x",
+      description:
+        "This 3-night, 4-day adventure is the ultimate weekend retreat for anyone seeking a reset of the mind and body while also having fun! Escape to breathtaking, nature-filled locations where you’ll immerse yourself in healing workshops, energy-clearing practices, and community-building activities. You’ll leave feeling recharged, rebalanced, and ready to approach life with a fresh, vibrant perspective.",
+      duration: "3 Nights, 4 Days",
+      perfect:
+        "People looking for a quick getaway that leaves you refreshed and reset",
+      expect: [
+        {
+          id: 1,
+          Icon: GutHealth,
+          title: "Holistic Health Workshops",
+          description: "Gut, Physical and emotional health workshops",
+        },
+        {
+          id: 2,
+          Icon: GutHealth,
+          title: "Soul-Aligned Experiences",
+          description: "Soul-aligned group activities",
+        },
+        {
+          id: 3,
+          Icon: GutHealth,
+          title: "High-Energy Stress Relief",
+          description: "High-energy sessions for stress relief",
+        },
+        {
+          id: 4,
+          Icon: GutHealth,
+          title: "Wholesome Organic Meals",
+          description: "Local, organic meals that will make you feel great!",
+        },
+      ],
+    },
+    "100x": {
+      heading: "100x",
+      description:
+        "If you're ready for the ultimate wellness experience, this is it! The Bloom100* Edition offers a full system reset for your body, mind, and soul. Over 7 days in stunning locations, you’ll experience deep healing, energy balancing, and purpose-driven workshops designed to re-align your life. This is the perfect chance to fully immerse yourself in a transformational experience and leave with more clarity, energy, and peace than ever before.",
+      duration: "7 Nights, 8 Days",
+      perfect:
+        "People who are ready to go all-in on their wellness journey and transform from the inside out",
+      expect: [
+        {
+          id: 1,
+          Icon: GutHealth,
+          title: "Holistic Healing Experience",
+          description: "Deep Holistic Healing",
+        },
+        {
+          id: 2,
+          Icon: GutHealth,
+          title: "Transformational Coaching",
+          description: "Transformational Coaching Sessions",
+        },
+        {
+          id: 3,
+          Icon: GutHealth,
+          title: "Nutrient-Rich Meal Plans",
+          description: "Nutrient-Dense Meals",
+        },
+        {
+          id: 4,
+          Icon: GutHealth,
+          title: "Wellness Immersion",
+          description: "Immersive Wellness Activities",
+        },
+        {
+          id: 5,
+          Icon: GutHealth,
+          title: "Exclusive Support Community",
+          description: "Exclusive Community Support",
+        },
+      ],
+    },
+  };
 
   const handleRequest = (eventId) => {
     if (!token) {
@@ -80,56 +198,59 @@ const EventsPage = () => {
     }
   };
 
+  if (!edition) {
+    return <div>Loading....</div>;
+  }
+
   return (
     <div className="bg-white">
       <Navbar />
-      <section className="relative min-h-screen  flex items-center pt-16">
-        <div className="container mx-auto px-6 py-24 md:py-32">
-          <div className="flex flex-col md:flex-row gap-12">
-            <div className="w-full md:w-1/2">
-              <div className="text-[8rem] font-bold text-gray-600 opacity-30 leading-none">
-                {edition}
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#E16B33] -mt-6 mb-6">
-                What level of hiker are you?
-              </h2>
-              <p className="text-black opacity-80 mb-8">
-                Determine your level of hiking expertise and find the trail that
-                matches your experience. From beginners looking for gentle paths
-                to experienced adventurers seeking challenging terrain, we have
-                trails for every skill level. Our expert-curated selections
-                ensure you'll find the perfect match for your outdoor adventure
-                goals.
-              </p>
-              <motion.button
-                className="px-6 py-3 bg-[#E16B33] text-white rounded-md text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Take the Quiz
-              </motion.button>
-            </div>
-            <div className="w-full md:w-1/2">
-              <motion.div
-                className="rounded-lg overflow-hidden h-80 md:h-96"
-                whileInView={{ y: [50, 0], opacity: [0, 1] }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: false, amount: 0.2 }}
-              >
-                <img
-                  src={HikerImg}
-                  alt="Hiker on mountain path"
-                  className="w-full h-full object-cover select-none"
-                />
-              </motion.div>
-            </div>
+
+      <div className="md:mt-[53px] mt-[47px]">
+        {/* BANNER SECTION */}
+        <div className="bg-gradient-to-b from-[#C1EDF1] to-white md:pt-10 pt-8 via-white ">
+          <div className="container mx-auto md:py-10">
+            {/* EDITION NAME */}
+            <h1 className="text-[#E16B33] md:text-3xl text-xl font-medium text-center">
+              {editionsData[edition].heading} Edition
+            </h1>
+
+            {/* DESCRIPTIOM */}
+            <p className="text-[#808080] max-w-10/12 mx-auto text-center md:text-[20px] my-10 font-medium">
+              {editionsData[edition].description}
+            </p>
           </div>
         </div>
-      </section>
+        <div className="container mx-auto px-4">
+          {/* ADDITIONAL DETAILS */}
+          <div className="flex gap-4 text-[#E16B33] font-light justify-center items-center md:text-[20px] text-[16px]">
+            <div className="flex md:flex-row flex-col">
+              <o>Duration: </o>
+              <span className="font-semibold">
+                {editionsData[edition].duration}
+              </span>
+            </div>
+            <p>|</p>
+            <div className="flex md:flex-row flex-col">
+              <p>Perfect For: </p>
+              <span className="font-bold">{editionsData[edition].perfect}</span>
+            </div>
+          </div>
 
-      <div className="  md:h-[150px] h-[50px] " />
-      <section className="min-h-screen items-center justify-center ">
-        <div className="container mx-auto py-20">
+          {/* IMAGE */}
+          <div className="my-10 h-[350px]">
+            <img
+              src={Banner}
+              alt=".."
+              className="h-full w-full object-cover"
+              style={{ objectPosition: "0% 30%" }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* <section className="">
+        <div className="container mx-auto ">
           <h1 className="[word-spacing:7px] mt-20 mb-6 text-[#E16B33] font-bold text-4xl md:px-1 px-5 underline-offset-12 underline decoration-[#E16B33]">
             All{" "}
             <span className="text-[#E16B33] italic">
@@ -144,45 +265,39 @@ const EventsPage = () => {
           <div className="grid md:grid-cols-2 grid-cols-1 gap-16 my-5  md:px-0 px-5 py-10 container w-fit">
             {events &&
               events.map((event) => (
-                // <div
-                //   key={event.id}
-                //   className=" w-full h-52 flex py-8 px-5 rounded-lg hover:scale-101 duration-300 holographic-card  bg-white"
-                // >
-                //   {/* <div className=""> */}
-                //   <img
-                //     src={HikerImg}
-                //     className="h-full object-cover rounded-lg hover:touch-pinch-zoom duration-300"
-                //   />
-                //   {/* </div> */}
-                //   <div className="px-5">
-                //     <h1 className="my-3 text-[#E16B33] text-xl font-semibold">
-                //       {event.title}
-                //     </h1>
-                //     <p
-                //       className="mb-3 text- text-sm leading-6"
-                //       dangerouslySetInnerHTML={{ __html: event.description }}
-                //     ></p>
-                //     <button
-                //       onClick={() => handleRequest(event._id)}
-                //       className="bg-[#E16B33] px-4 py-1 text-white rounded-lg text-sm"
-                //     >
-                //       {isAllowed
-                //         ? isApproved(event._id)
-                //           ? "Joined"
-                //           : "Join Now"
-                //         : requestSent(event._id)
-                //         ? "Invite Requested"
-                //         : "Request Invite"}
-                //     </button>
-                //   </div>
-                // </div>
                 <div className={`lg:mx-10 px-2`}>
                   <Card key={event._id} event={event} />
                 </div>
               ))}
           </div>
         </div>
+      </section> */}
+
+      <section className="">
+        <SectionHeader title={"What To Expect"} lineColor={"bg-[#3CA18F]"} />
+        <Expect data={editionsData[edition].expect} />
+        <div className="my-5 h-[350px] container mx-auto px-4">
+          <img
+            src={Banner}
+            alt=".."
+            className="h-full w-full object-cover"
+            style={{ objectPosition: "0% 30%" }}
+          />
+        </div>
       </section>
+
+      <section className="container mx-auto">
+        <SectionHeader title={"FAQS"} lineColor={"bg-[#3CA18F]"} />
+        <div className="pt-20 pb-5 px-4">
+          <Faq />
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4">
+        <Socials />
+      </div>
+
+      <Footer />
     </div>
   );
 };

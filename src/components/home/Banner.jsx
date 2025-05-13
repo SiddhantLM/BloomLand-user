@@ -27,8 +27,8 @@ const Banner = () => {
         </motion.p>
 
         {/* Call to Action Button with Hover Animation */}
-        {/* <motion.button
-          className="mt-8 py-3 px-8 bg-[#E16B33] text-white rounded-full text-lg hover:bg-[#F9A26B] transition-colors"
+        <motion.button
+          className="mt-8 md:py-3 py-2 md:px-8 px-5 bg-[#E16B33] text-white rounded-full md:text-lg text-base hover:-translate-y-2 hover:scale-102 duration-300  transition-all"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
@@ -36,7 +36,7 @@ const Banner = () => {
           whileTap={{ scale: 0.95 }}
         >
           Get Started
-        </motion.button> */}
+        </motion.button>
       </div>
     </div>
   );
