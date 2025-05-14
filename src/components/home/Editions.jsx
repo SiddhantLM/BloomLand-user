@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "motion/react";
 import HikerImg from "../../assets/hiker.webp";
@@ -9,12 +9,14 @@ import { ArrowRight, ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { setSelected } from "../../store/slices/authSlice";
+import EditionsCarousel from "./EditionsCarousel";
 
 const Editions = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isValid, detailsSubmitted } = useSelector((state) => state.auth);
-
+  const OPTIONS = { loop: false };
+  const [isMobile, setIsMobile] = useState(false);
   const content = [
     {
       id: "01",
@@ -41,16 +43,51 @@ const Editions = () => {
     },
   ];
 
+  const handleNavigate = (item) => {
+    if (isValid) {
+      if (detailsSubmitted) {
+        navigate(`/editions/${item.category}`);
+      } else {
+        dispatch(setSelected(`/editions/${item.category}`));
+        navigate("/details");
+      }
+    } else {
+      dispatch(setSelected(`/editions/${item.category}`));
+      navigate("/auth/login");
+    }
+  };
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    // Initial check
+    checkIfMobile();
+
+    // Add event listener for resize
+    window.addEventListener("resize", checkIfMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
+
   return (
-    <section className="relative bg-inherit">
+    <section className="relative bg-inherit container mx-auto flex">
       <AnimatePresence>
-        {content &&
+        {isMobile ? (
+          <EditionsCarousel content={content} handleNavigate={handleNavigate} />
+        ) : (
+          content &&
           content.length > 0 &&
           content.map((item) => (
-            <section className="relative flex items-center" key={item.id}>
-              <div className="container mx-auto px-6 py-10 md:py-10">
-                <div className="flex flex-col md:flex-row md:gap-12 holographic-card bg-white border border-[#3CA18F] ">
-                  <div className="w-full md:w-1/3">
+            <section
+              className="relative flex flex-col items-center h-auto"
+              key={item.id}
+            >
+              <div className="px-6 py-10 h-full">
+                <div className="flex flex-col  holographic-card bg-white border border-[#3CA18F] h-full ">
+                  <div className="w-full h-full flex flex-col ">
                     <motion.div
                       className="rounded-lg overflow-hidden md:h-96"
                       whileInView={{ opacity: [0, 1] }}
@@ -65,35 +102,23 @@ const Editions = () => {
                     </motion.div>
                   </div>
 
-                  <div className="flex-1 md:p-10 p-5 max-h-full flex flex-col justify-between">
+                  <div className=" p-5 h-full flex flex-col justify-between">
                     <div>
-                      <div className=" capitalize mb-6 md:text-[41px] text-3xl font-medium text-[#E16B33] ">
+                      <div className=" capitalize mb-6 md:text-[35px] text-3xl font-medium text-[#E16B33] ">
                         {item.category} Edition
                       </div>
-                      <h2 className="text-[18px] md:text-[25px] font-medium text-black mb-4">
+                      <h2 className="text-[18px] md:text-[20px] font-medium text-black mb-2">
                         {item.title}
                       </h2>
-                      <p className="text-black md:text-[20px] font-light mb-8">
+                      <p className="text-black md:text-[18px] font-light mb-8">
                         {item.description}
                       </p>
                     </div>
                     <motion.button
-                      className=" w-fit text-[#E16B33] md:text-xl text-lg font-semibold flex gap-1 items-center-safe  "
+                      className=" self w-fit text-[#E16B33] md:text-xl pb-3 pl-3 text-lg font-semibold flex gap-1 items-center-safe  "
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        if (isValid) {
-                          if (detailsSubmitted) {
-                            navigate(`/editions/${item.category}`);
-                          } else {
-                            dispatch(setSelected(`/editions/${item.category}`));
-                            navigate("/details");
-                          }
-                        } else {
-                          dispatch(setSelected(`/editions/${item.category}`));
-                          navigate("/auth/login");
-                        }
-                      }}
+                      onClick={() => handleNavigate(item)}
                     >
                       Join Edition
                       <ArrowRight className="arrow-animation" />
@@ -103,7 +128,8 @@ const Editions = () => {
                 </div>
               </div>
             </section>
-          ))}
+          ))
+        )}
       </AnimatePresence>
     </section>
   );
