@@ -67,8 +67,10 @@ export const login = ({ email, password, navigate, selected }) => {
 
       toast.success("Logged in successfully");
       if (response.data.detailsSubmitted) {
-        if (selected !== null) {
-          navigate(selected);
+        if (selected !== "") {
+          setTimeout(() => {
+            navigate(selected);
+          }, 100);
         } else {
           navigate("/dashboard");
         }

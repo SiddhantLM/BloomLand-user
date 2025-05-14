@@ -41,7 +41,9 @@ const Form = ({ type = "login" }) => {
   const handleSubmit = () => {
     if (type === "login") {
       // dispatch(setLoading(true));
-      dispatch(login({ email, password, navigate, selected }));
+      dispatch(
+        login({ email, password, navigate, selected: selected?.toString() })
+      );
     } else if (type === "signup") {
       // dispatch(setLoading(true));
 
@@ -98,8 +100,10 @@ const Form = ({ type = "login" }) => {
         dispatch(setToken(token));
         dispatch(setDetailsSubmitted(result.data.detailsSubmitted));
         if (result.data.detailsSubmitted) {
-          if (selected !== null) {
-            navigate(`${selected}`);
+          if (selected) {
+            setTimeout(() => {
+              navigate(selected);
+            }, 100);
           } else {
             navigate("/dashboard");
           }
@@ -107,7 +111,6 @@ const Form = ({ type = "login" }) => {
           navigate("/details");
         }
       } else {
-        console.log(authResult);
         throw new Error(authResult);
       }
     } catch (e) {
@@ -121,7 +124,6 @@ const Form = ({ type = "login" }) => {
     onError: responseGoogle,
     flow: "auth-code",
   });
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full">
       <div className="w-full max-w-md bg-white rounded-lg px-10 h-full flex flex-col justify-between">

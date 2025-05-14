@@ -6,6 +6,7 @@ import Navbar from "../components/home/Navbar";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
 import Newsletter from "../components/common/Newsletter";
+import Footer from "../components/home/Footer";
 
 export default function BlogDetails() {
   // Dummy blog data
@@ -222,6 +223,7 @@ Happy coding!
           <Newsletter />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

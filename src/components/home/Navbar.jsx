@@ -375,14 +375,14 @@ const Navbar = () => {
                             {edition.description}
                           </p>
                           <button
-                            className="mt-4 bg-white text-[#E16B33] px-4 py-2 rounded text-sm hover:bg-[#F9A26B] hover:text-white transition-colors"
+                            className="mt-4 bg-white text-[#E16B33] px-4 py-2 rounded text-sm hover:bg-[#F9A26B] hover:text-white "
                             style={{
                               opacity: isEditionsHovered ? 1 : 0,
                               transform: isEditionsHovered
                                 ? "translateY(0)"
                                 : "translateY(8px)",
                               transition:
-                                "opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease",
+                                "opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease",
                               transitionDelay: `${0.3 + index * 0.1}s`,
                             }}
                             onMouseDown={(e) =>

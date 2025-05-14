@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
+import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelected } from "../../store/slices/authSlice";
 
 const Banner = () => {
+  const { isValid, detailsSubmitted } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleNavigate = () => {
+    if (isValid) {
+      if (detailsSubmitted) {
+        navigate("/editions");
+      } else {
+        dispatch(setSelected("/editions"));
+        navigate("/details");
+      }
+    } else {
+      dispatch(setSelected("/editions"));
+      navigate("/auth/login");
+    }
+  };
+
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center">
       {/* Content - Title and Description */}
@@ -34,6 +55,7 @@ const Banner = () => {
           transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={handleNavigate}
         >
           Get Started
         </motion.button>

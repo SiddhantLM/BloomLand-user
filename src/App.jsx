@@ -14,13 +14,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "./store/slices/eventSlice";
 import { checkValidity, logout } from "./store/slices/authSlice";
 import { fetchUser } from "./store/slices/userSlice";
-import Contact from "./pages/Contact";
 import Ticket from "./components/Ticket";
 import EventDetails from "./pages/EventDetails";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
 import AboutUs from "./pages/AboutUs";
 import Community from "./pages/Community";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ function App() {
         <Route path="/editions/day0" element={<EventsPage />} />
         <Route path="/editions/10x" element={<EventsPage />} />
         <Route path="/editions/100x" element={<EventsPage />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/community" element={<Community />} />
         <Route path="/ticket" element={<Ticket />} />

@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import Navbar from "../components/home/Navbar";
 import BannerImg from "../assets/banner.png";
 import BlogSection from "../components/blogs/BlogSection";
+import Footer from "../components/home/Footer";
 
 const Blogs = () => {
   return (
@@ -36,6 +37,7 @@ const Blogs = () => {
       <div className="bg-gradient-to-b from-[#EFFFFC] to-white">
         <BlogSection />
       </div>
+      <Footer />
     </>
   );
 };

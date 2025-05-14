@@ -23,7 +23,7 @@ const initialState = {
     ? localStorage.getItem("detailsSubmitted")
     : false,
   isValid: false,
-  selected: null,
+  selected: "",
   loading: false,
   error: false,
 };

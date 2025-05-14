@@ -16,9 +16,9 @@ import GutHealth from "../assets/gut-health.png";
 import Expect from "../components/event/Expect";
 import Faq from "../components/about/Faq";
 import Socials from "../components/about/Socials";
+import EventCarousel from "../components/event/EventCarousel";
 
 const EventsPage = () => {
-  console.log(GutHealth);
   const location = useLocation();
   const [edition, setEdition] = useState(null);
   const [isAllowed, setIsAllowed] = useState(false);
@@ -224,14 +224,14 @@ const EventsPage = () => {
         <div className="container mx-auto px-4">
           {/* ADDITIONAL DETAILS */}
           <div className="flex gap-4 text-[#E16B33] font-light justify-center items-center md:text-[20px] text-[16px]">
-            <div className="flex md:flex-row flex-col">
+            <div className="flex md:flex-row flex-col gap-2">
               <o>Duration: </o>
               <span className="font-semibold">
                 {editionsData[edition].duration}
               </span>
             </div>
             <p>|</p>
-            <div className="flex md:flex-row flex-col">
+            <div className="flex md:flex-row flex-col gap-2">
               <p>Perfect For: </p>
               <span className="font-bold">{editionsData[edition].perfect}</span>
             </div>
@@ -249,29 +249,12 @@ const EventsPage = () => {
         </div>
       </div>
 
-      {/* <section className="">
+      <section className="">
+        <SectionHeader title={"Upcoming Events"} lineColor={"bg-[#3CA18F]"} />
         <div className="container mx-auto ">
-          <h1 className="[word-spacing:7px] mt-20 mb-6 text-[#E16B33] font-bold text-4xl md:px-1 px-5 underline-offset-12 underline decoration-[#E16B33]">
-            All{" "}
-            <span className="text-[#E16B33] italic">
-              {edition === "day0"
-                ? "Day 0"
-                : edition === "10x"
-                ? "10x"
-                : "100x"}{" "}
-            </span>
-            Events
-          </h1>
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-16 my-5  md:px-0 px-5 py-10 container w-fit">
-            {events &&
-              events.map((event) => (
-                <div className={`lg:mx-10 px-2`}>
-                  <Card key={event._id} event={event} />
-                </div>
-              ))}
-          </div>
+          <EventCarousel events={events} />
         </div>
-      </section> */}
+      </section>
 
       <section className="">
         <SectionHeader title={"What To Expect"} lineColor={"bg-[#3CA18F]"} />
