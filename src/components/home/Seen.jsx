@@ -27,6 +27,7 @@ const Seen = () => {
       <IconsList />
 
       <Statements />
+      <SectionHeader title={"What We Do"} lineColor={"bg-[#3CA18F]"} />
       <Visionaries />
     </div>
   );

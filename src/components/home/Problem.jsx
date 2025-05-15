@@ -5,9 +5,15 @@ import GutHealth from "../../assets/gut-health.png";
 import SpiritualHealth from "../../assets/spiritual-wellness.png";
 import SocialHealth from "../../assets/community.png";
 import ProblemCarousel from "../event/ProblemCarousel";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { setSelected } from "../../store/slices/authSlice";
 
 const Problem = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const { isValid, detailsSubmitted } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const content = [
     {
       id: 1,
@@ -65,8 +71,23 @@ const Problem = () => {
     // Cleanup
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
+
+  const handleNavigate = () => {
+    if (isValid) {
+      if (detailsSubmitted) {
+        navigate("/editions");
+      } else {
+        dispatch(setSelected("/editions"));
+        navigate("/details");
+      }
+    } else {
+      dispatch(setSelected("/editions"));
+      navigate("/auth/login");
+    }
+  };
+
   return (
-    <div className={`${isMobile && "my-10 relative"}`}>
+    <div className={`${isMobile && "my-10 relative"} flex flex-col`}>
       {isMobile ? (
         <ProblemCarousel datas={content} />
       ) : (
@@ -91,6 +112,12 @@ const Problem = () => {
           ))}
         </div>
       )}
+      <button
+        onClick={handleNavigate}
+        className=" w-fit self-center mt-16 md:py-3 py-2 md:px-8 px-5 bg-[#E16B33] text-white rounded-lg md:text-lg text-base h hover:scale-102 duration-300  transition"
+      >
+        Request Invite
+      </button>
     </div>
   );
 };

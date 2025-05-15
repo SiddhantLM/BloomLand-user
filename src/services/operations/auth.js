@@ -8,6 +8,7 @@ import {
 import { authEndpoints } from "../apis";
 import { setFormData } from "../../store/slices/formData";
 import { toast } from "react-toastify";
+import { fetchUser } from "../../store/slices/userSlice";
 
 export const sendOtp = ({ email, password, navigate }) => {
   return async (dispatch) => {
@@ -170,4 +171,20 @@ export const googleAuth = async (code) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const editUser = ({ data, token }) => {
+  return async (dispatch) => {
+    try {
+      await axios.post(authEndpoints.UPDATE, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Details Updated!");
+      dispatch(fetchUser({ token: token }));
+    } catch (error) {
+      toast.error(error.response ? error.response.data.message : error.message);
+    }
+  };
 };

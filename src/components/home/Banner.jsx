@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
 import { useNavigate } from "react-router";
@@ -49,15 +49,15 @@ const Banner = () => {
 
         {/* Call to Action Button with Hover Animation */}
         <motion.button
-          className="mt-8 md:py-3 py-2 md:px-8 px-5 bg-[#E16B33] text-white rounded-full md:text-lg text-base hover:-translate-y-2 hover:scale-102 duration-300  transition-all"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="mt-8 md:py-3 py-2 md:px-8 px-5 bg-[#E16B33] text-white rounded-lg md:text-lg text-base h hover:scale-102 duration-300  transition"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleNavigate}
         >
-          Get Started
+          Request Invite
         </motion.button>
       </div>
     </div>

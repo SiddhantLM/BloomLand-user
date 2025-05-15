@@ -23,7 +23,6 @@ export default function Card({ event }) {
   };
 
   useEffect(() => {
-    console.log(event);
     if (event?.start_date !== null && event?.end_data !== null) {
       const calculatedDuration = getDuration(event.start_date, event.end_data);
       setDuration(calculatedDuration);

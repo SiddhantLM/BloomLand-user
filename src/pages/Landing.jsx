@@ -11,6 +11,8 @@ import About from "../components/home/About";
 import SectionHeader from "../components/common/SectionHeader";
 import Problem from "../components/home/Problem";
 import Seen from "../components/home/Seen";
+import Benefits from "../components/home/Benefits";
+import Fomo from "../components/home/Fomo";
 
 const Landing = () => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -66,19 +68,27 @@ const Landing = () => {
         </div>
         <div className="bg-white ">
           <SectionHeader
-            subtitle={"5 Dimensions and Facts"}
+            // subtitle={"5 Dimensions and Facts"}
             title={"Holistic Health Problems"}
             lineColor="bg-[#3CA18F]"
           />
           <Problem />
         </div>
 
-        <div className=" flex flex-col md:my-20 my-0">
+        <div className=" flex flex-col md:mb-20 md:mt-10 my-0">
           <div className="  md:h-[150px] h-[50px] bg-gradient-to-b to-[#FFE8DE] from-transparent" />
           <div className="bg-gradient-to-b from-[#FFE8DE] to-white">
             <Seen />
           </div>
           {/* <div className="  h-[100px] bg-gradient-to-t to-[#FFE8DE] from-transparent" /> */}
+        </div>
+
+        <div className="bg-white ">
+          <Benefits />
+        </div>
+
+        <div className="container mx-auto md:my-40 my-15">
+          <Fomo />
         </div>
 
         {/* Additional sections */}

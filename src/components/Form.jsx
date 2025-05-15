@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/BL_OrangeLogo.png";
 import Google from "../assets/google.png";
 import { useGoogleLogin } from "@react-oauth/google";
 import { ReactComponent as Mail } from "../assets/mail.svg";
@@ -129,8 +129,8 @@ const Form = ({ type = "login" }) => {
       <div className="w-full max-w-md bg-white rounded-lg px-10 h-full flex flex-col justify-between">
         <div>
           {/* Logo */}
-          <div className="flex ">
-            <img src={Logo} alt="logo" className="w-10 h-10" />
+          <div className="flex pb-3">
+            <img src={Logo} alt="logo" className="w-fit h-12" />
           </div>
 
           {/* Header */}

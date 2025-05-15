@@ -33,6 +33,16 @@ const initialState = {
   name: "",
   email: "",
   phone: "",
+  dob: "",
+  experience: "",
+  journey: "",
+  reason: "",
+  area: "",
+  bloom: "",
+  ready: "",
+  state: "",
+  notes: "",
+  isCommunity: false,
   loading: false,
   error: null,
 };
@@ -62,6 +72,16 @@ const userSlice = createSlice({
       state.name = action.payload.name;
       state.phone = action.payload.phone;
       state.approved = action.payload.approved;
+      state.dob = action.payload.dob;
+      state.experience = action.payload.experience;
+      state.journey = action.payload.journey;
+      state.reason = action.payload.reason;
+      state.area = action.payload.area;
+      state.bloom = action.payload.bloom;
+      state.ready = action.payload.ready;
+      state.state = action.payload.state;
+      state.notes = action.payload.notes;
+      state.isCommunity = action.payload.isCommunity;
       state.loading = false;
     });
     builder.addCase(fetchUser.rejected, (state, action) => {

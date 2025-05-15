@@ -1,6 +1,7 @@
 import axios from "axios";
 import { paymentEndpoints } from "../apis";
 import { toast } from "react-toastify";
+import { fetchUser } from "../../store/slices/userSlice";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -17,7 +18,7 @@ function loadScript(src) {
 }
 
 // Buy the Course
-export async function PayEvent({ token, eventId, user_details }) {
+export async function PayEvent({ token, eventId, user_details, dispatch }) {
   try {
     // Loading the script of Razorpay SDK
     const res = await loadScript(
@@ -73,7 +74,8 @@ export async function PayEvent({ token, eventId, user_details }) {
         );
         verifyPayment(
           { ...response, eventId, amount: orderResponse.data.data.amount },
-          token
+          token,
+          dispatch
         );
       },
     };
@@ -89,7 +91,7 @@ export async function PayEvent({ token, eventId, user_details }) {
   }
 }
 
-async function verifyPayment(bodyData, token) {
+async function verifyPayment(bodyData, token, dispatch) {
   try {
     const response = await axios.post(
       paymentEndpoints.COURSE_VERIFY_API,
@@ -107,6 +109,7 @@ async function verifyPayment(bodyData, token) {
     }
 
     toast.success("Transaction completed successfully");
+    dispatch(fetchUser({ token: token }));
   } catch (error) {
     console.log("PAYMENT VERIFY ERROR............", error);
     toast.error("Error processing your payment");

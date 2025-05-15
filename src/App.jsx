@@ -21,6 +21,7 @@ import BlogDetails from "./pages/BlogDetails";
 import AboutUs from "./pages/AboutUs";
 import Community from "./pages/Community";
 import ContactUs from "./pages/ContactUs";
+import UserDashboard from "./pages/UserDashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/community" element={<Community />} />
         <Route path="/ticket" element={<Ticket />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/load" element={<Loader />} />
         <Route path="/event/:id" element={<EventDetails />} />
         <Route path="/blogs" element={<Blogs />} />

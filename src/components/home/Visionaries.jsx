@@ -80,7 +80,7 @@ const RotatingVisionariesSection = () => {
   };
 
   return (
-    <div className="w-full md:py-16 bg-inherit pb-8">
+    <div className="w-full  bg-inherit mt-14">
       <div className="text-center">
         <div className="mb-6 flex md:flex-row flex-col items-center justify-center h-fit">
           <p className="md:text-4xl text-2xl font-semibold text-black tracking-wider  transform md:-translate-x-1/2">

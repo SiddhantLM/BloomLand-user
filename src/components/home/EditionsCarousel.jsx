@@ -11,7 +11,9 @@ import { ArrowRight } from "lucide-react";
 const EditionsCarousel = ({ content, handleNavigate }) => {
   const OPTIONS = { loop: false };
   return (
-    <Carousel options={OPTIONS}>
+    // Change autoplay delay : searcg "autoplayDelay" in ./Carousel
+
+    <Carousel options={OPTIONS} isAutoPlay={true}>
       <SliderContainer>
         {content &&
           content.map((data, index) => (
