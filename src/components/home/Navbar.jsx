@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../../store/slices/authSlice";
 import { X } from "lucide-react";
-import Logo from "../../assets/BL_WhiteLogo.png";
+import Logo from "../../assets/BL_Whitelogo.png";
 import UserProfile from "./UserProfile";
 import LogoutModal from "../common/LogoutModal";
 // import logo from "../../assets/logo.png";

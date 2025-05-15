@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/BL_OrangeLogo.png";
+import Logo from "../assets/BL_Orangelogo.png";
 import Google from "../assets/google.png";
 import { useGoogleLogin } from "@react-oauth/google";
 import { ReactComponent as Mail } from "../assets/mail.svg";
