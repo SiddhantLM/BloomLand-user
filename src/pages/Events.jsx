@@ -48,7 +48,11 @@ const EventsPage = () => {
   const [events, setEvents] = useState(null);
   const Event = useSelector((state) => state.event);
   useEffect(() => {
-    setEvents(Event.events.filter((e) => e.category === edition));
+    setEvents(
+      Event.events.filter(
+        (e) => e.category === edition && new Date(e.start_date) > Date.now()
+      )
+    );
   }, [Event, edition]);
 
   const editionsData = {
@@ -211,29 +215,31 @@ const EventsPage = () => {
         <div className="bg-gradient-to-b from-[#C1EDF1] to-white md:pt-10 pt-8 via-white ">
           <div className="container mx-auto md:py-10">
             {/* EDITION NAME */}
-            <h1 className="text-[#E16B33] md:text-3xl text-xl font-medium text-center">
+            <h1 className="text-[#E16B33] md:text-3xl text-3xl font-medium text-center">
               {editionsData[edition].heading} Edition
             </h1>
 
             {/* DESCRIPTIOM */}
-            <p className="text-[#808080] max-w-10/12 mx-auto text-center md:text-[20px] my-10 font-medium">
+            <p className=" max-w-10/12 mx-auto text-center md:text-[20px] md:my-10 my-5 font-medium">
               {editionsData[edition].description}
             </p>
           </div>
         </div>
         <div className="container mx-auto px-4">
           {/* ADDITIONAL DETAILS */}
-          <div className="flex gap-4 text-[#E16B33] font-light justify-center items-center md:text-[20px] text-[16px]">
+          <div className="flex gap-4 text-[#E16B33] font-light justify-center items-center md:text-[20px] text-[14px]">
             <div className="flex md:flex-row flex-col gap-2">
-              <o>Duration: </o>
-              <span className="font-semibold">
+              <p className="flex-1 md:text-start text-center">Duration: </p>
+              <span className="font-semibold md:text-start text-center">
                 {editionsData[edition].duration}
               </span>
             </div>
             <p>|</p>
-            <div className="flex md:flex-row flex-col gap-2">
-              <p>Perfect For: </p>
-              <span className="font-bold">{editionsData[edition].perfect}</span>
+            <div className="flex flex-1 md:flex-row flex-col gap-2">
+              <p className="md:text-start text-center">Perfect For: </p>
+              <span className="font-bold md:text-start text-center">
+                {editionsData[edition].perfect}
+              </span>
             </div>
           </div>
 

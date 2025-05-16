@@ -381,7 +381,7 @@ const Form = ({ type = "login" }) => {
 
           {type === "otp" && (
             <button
-              type="submit"
+              // type="submit"
               className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-[#E16B33] bg-[#FFE6C9] hover:bg-[#FFE6C9] focus:outline-none ${
                 type === "otp" ? "mb-2" : "mb-6"
               } text-sm font-semibold`}
@@ -394,18 +394,22 @@ const Form = ({ type = "login" }) => {
         {/* Create Account Link */}
         {type !== "otp" && type !== "reset-password" && (
           <>
-            <div className="text-center">
+            <div className="text-center flex justify-center gap-x-2">
               <span className="text-sm text-gray-600">
                 {type === "login"
                   ? "Not Registered Yet? "
                   : "Already have an account? "}
               </span>
-              <a
-                href={type === "login" ? "/auth/signup" : "/auth/login"}
-                className="text-sm text-[#E16B33] hover:text-[#E16B33]"
+              <div
+                onClick={() => {
+                  type === "login"
+                    ? navigate("/auth/signup")
+                    : navigate("/auth/login");
+                }}
+                className="text-sm cursor-pointer text-[#E16B33] hover:text-[#E16B33]"
               >
                 {type === "login" ? "Create an account" : "Login"}
-              </a>
+              </div>
             </div>
           </>
         )}
