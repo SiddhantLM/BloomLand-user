@@ -29,7 +29,7 @@ const Banner = () => {
       {/* Content - Title and Description */}
       <div className="flex flex-col justify-center items-center z-20 px-4 text-center">
         <motion.h1
-          className="text-2xl md:text-4xl lg:text-4xl font-semibold mb-6 text-white z-50"
+          className="text-2xl md:text-2xl lg:text-3xl font-semibold mb-2 text-white z-50"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -38,7 +38,7 @@ const Banner = () => {
         </motion.h1>
 
         <motion.p
-          className="text-white text-sm md:text-lg max-w-3xl mx-auto mb-3 z-50"
+          className="text-white text-sm md:text-base max-w-3xl mx-auto mb-2 z-50"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
@@ -49,10 +49,8 @@ const Banner = () => {
 
         {/* Call to Action Button with Hover Animation */}
         <motion.button
-          className="mt-8 md:py-3 py-2 md:px-8 px-5 bg-[#E16B33] text-white rounded-lg md:text-lg text-base h hover:scale-102 duration-300  transition"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+          className="mt-8 md:py-2 py-3 md:px-8 px-3 bg-[#E16B33] text-white rounded-lg hover:text-black hover:bg-white transition-colors text-base duration-300 "
+          // transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleNavigate}

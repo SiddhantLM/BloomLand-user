@@ -2,7 +2,7 @@ import Banner from "../../assets/banner.png";
 
 export default function Mission() {
   return (
-    <div className="relative w-full h-96 overflow-hidden rounded-xl">
+    <div className="relative w-full h-96 overflow-hidden rounded-xl md:max-w-[80%]">
       {/* Background image */}
       <img
         src={Banner}
@@ -15,11 +15,11 @@ export default function Mission() {
 
       {/* Content container */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-8 md:px-16">
-        <h2 className="text-2xl md:text-4xl font-medium text-white mb-4">
+        <h2 className="text-xl md:text-4xl font-medium text-white mb-4">
           Our Mission
         </h2>
 
-        <p className="text-white text-center max-w-4xl mx-auto text-sm md:text-lg leading-relaxed">
+        <p className="text-white text-center max-w-4xl mx-auto text-sm md:text-base leading-relaxed">
           At BloomLand, our mission is to offer curated, healing experiences
           that bring together like-minded souls for emotional healing,
           self-discovery, and holistic growth. We create a safe space where each

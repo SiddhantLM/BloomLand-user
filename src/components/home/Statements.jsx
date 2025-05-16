@@ -79,7 +79,7 @@ const Statements = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center mb-5">
-      <h1 className="text-xl font-semibold  text-center">
+      <h1 className="text-lg font-semibold  text-center">
         Statements from our Bloom leaders and Bloomers
       </h1>
       <div className="relative w-full overflow-hidden">
@@ -100,22 +100,22 @@ const Statements = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="md:text-lg text-[14px] font-semibold text-gray-900">
+                    <h3 className="md:text-base text-[14px] font-semibold text-gray-900">
                       {item.name}
                     </h3>
                     <p className="text-sm">
-                      <span className="text-[#F7751E] md:text-xs text-[10px]">
+                      <span className="text-[#F7751E] text-[10px]">
                         {item.position}
                       </span>
                       <span className="mx-1">•</span>
-                      <span className="text-[#F7751E] font-semibold md:text-xs text-[10px]">
+                      <span className="text-[#F7751E] font-semibold  text-[10px]">
                         {item.company}
                       </span>
                     </p>
                   </div>
                 </div>
 
-                <p className="text-black font-semibold leading-relaxed md:text-base text-sm">
+                <p className="text-black font-semibold leading-relaxed text-sm">
                   {item.statement}
                 </p>
               </div>

@@ -87,7 +87,7 @@ const Landing = () => {
           <Benefits />
         </div>
 
-        <div className="container mx-auto md:my-40 my-15">
+        <div className="md:max-w-[80%] max-w-full mx-auto md:my-40 my-15">
           <Fomo />
         </div>
 

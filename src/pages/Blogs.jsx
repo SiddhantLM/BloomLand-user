@@ -25,7 +25,7 @@ const Blogs = () => {
 
           {/* This overlay creates the fade effect at the bottom of the image */}
         </motion.div>
-        <div className="absolute top-1/8 z-50 w-full">
+        <div className="absolute top-1/8 z-10 w-full">
           <div className="container flex justify-between mx-auto ">
             <h1 className="text-4xl text-white font-semibold ">Blogs</h1>
           </div>

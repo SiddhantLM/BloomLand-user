@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Solutions Column */}
           <div>
             <h3 className="font-medium text-gray-900 mb-4">Solutions</h3>
-            <ul className="space-y-1">
+            <ul className="space-y-1 text-sm">
               <li>
                 <a href="#" className="text-gray-600 hover:text-[#e16b33]">
                   Marketing
@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Support Column */}
           <div>
             <h3 className="font-medium text-gray-900 mb-4">Support</h3>
-            <ul className="space-y-1">
+            <ul className="space-y-1 text-sm">
               <li>
                 <a href="#" className="text-gray-600 hover:text-[#e16b33]">
                   Submit ticket
@@ -65,7 +65,7 @@ export default function Footer() {
           {/* Company Column */}
           <div>
             <h3 className="font-medium text-gray-900 mb-4">Company</h3>
-            <ul className="space-y-1">
+            <ul className="space-y-1 text-sm">
               <li>
                 <a href="#" className="text-gray-600 hover:text-[#e16b33]">
                   About

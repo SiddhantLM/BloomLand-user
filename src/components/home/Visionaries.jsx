@@ -83,7 +83,7 @@ const RotatingVisionariesSection = () => {
     <div className="w-full  bg-inherit mt-14">
       <div className="text-center">
         <div className="mb-6 flex md:flex-row flex-col items-center justify-center h-fit">
-          <p className="md:text-4xl text-2xl font-semibold text-black tracking-wider  transform md:-translate-x-1/2">
+          <p className="md:text-3xl text-2xl font-semibold text-black tracking-wider  transform md:-translate-x-1/2">
             We bring together
           </p>
           <div className="pl-0 ml-0">
@@ -95,7 +95,7 @@ const RotatingVisionariesSection = () => {
               {words.map((word, index) => (
                 <motion.div
                   key={word}
-                  className="word-item absolute md:w-64  text-center md:text-4xl text-2xl tracking-wider ml-0 pl-0 transform -traslate-x-1/2"
+                  className="word-item absolute md:w-64  text-center md:text-3xl text-2xl tracking-wider ml-0 pl-0 transform -traslate-x-1/2"
                   initial={calculatePosition(index)}
                   animate={calculatePosition(index)}
                   transition={{
@@ -119,7 +119,7 @@ const RotatingVisionariesSection = () => {
           </div>
         </div>
       </div>
-      <p className="md:text-lg text-base text-center max-w-2xl mx-auto text-black px-4">
+      <p className="text-base text-center max-w-2xl mx-auto text-black px-4">
         with the world's finest healers, guides, and leaders to create journeys
         of deep renewal, connection, and expansion
       </p>

@@ -41,7 +41,7 @@ const Benefits = () => {
       {isMobile ? (
         <BenefitsCarousel datas={content} />
       ) : (
-        <div className="flex px-4 md:flex-row lg:flex-nowrap flex-wrap flex-col lg:container items-center mx-auto w-full justify-evenly py-2 gap-4 pt-10">
+        <div className="flex px-4 md:px-16 md:flex-row lg:flex-nowrap flex-wrap flex-col lg:container items-center mx-auto w-full justify-evenly py-2 gap-4 pt-10">
           {content.map((item, index) => (
             <div
               key={index}
@@ -52,10 +52,10 @@ const Benefits = () => {
                 className="h-1/3 w-1/3 object-cover"
                 alt=""
               />
-              <h1 className="mt-4 mb-4 text-xl text-[#E16B33] font-semibold">
+              <h1 className="mt-4 mb-4 text-lg text-[#E16B33] font-semibold">
                 {item.title}
               </h1>
-              <p className="text-center lg:text-start text-sm md:text-base">
+              <p className="text-center lg:text-start text-sm">
                 {item.description}
               </p>
             </div>

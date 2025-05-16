@@ -5,10 +5,10 @@ const Socials = () => {
   return (
     <div className="mx-auto w-full my-10 bg-gradient-to-b from-[#FFF1EB] to-white rounded-lg">
       <div className=" rounded-lg px-8 py-20 flex flex-col items-center ">
-        <h2 className="text-2xl font-medium text-orange-500 mb-2">
+        <h2 className="text-xl font-medium text-orange-500 mb-2">
           Follow Us on
         </h2>
-        <p className="text-gray-800 mb-6">For More & Regular Updates</p>
+        <p className="text-gray-800 mb-6 text-sm">For More & Regular Updates</p>
 
         <div className="flex space-x-8 items-center">
           <a

@@ -47,7 +47,7 @@ export default function BloomlandRetreatCards() {
 
   return (
     <div className="w-full md:py-12 pt-12 px-4 pb-6">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-10 gap-5">
+      <div className="md:max-w-[80%] max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-10 gap-5">
         {cards.map((card) => (
           <div
             key={card.id}
@@ -68,10 +68,10 @@ export default function BloomlandRetreatCards() {
             </div>
 
             <div className="-translate-y-1/4 px-5 transition transform group-hover:-translate-y-1/2 duration-500 ease-in-out ">
-              <h1 className="text-[#E16B33] md:text-[30px] text-xl font-medium">
+              <h1 className="text-[#E16B33] md:text-[24px] text-xl font-medium">
                 {card.title}
               </h1>
-              <p className="md:text-[19px] text-base font-medium">
+              <p className="md:text-[16px] text-base font-medium">
                 {card.content}
               </p>
             </div>

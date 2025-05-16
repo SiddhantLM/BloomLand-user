@@ -65,51 +65,56 @@ export default function ContactUs() {
   return (
     <>
       <Navbar />
-      <div className="w-full container mx-auto min-h-screen flex items-center justify-center bg-white p-4 lg:mt-[53px] mt-[47px]">
+      <div className="w-full md:max-w-[80%] max-w-full mx-auto min-h-screen flex items-center justify-center bg-white p-4 lg:mt-[53px] mt-[47px]">
         <div className="w-full flex flex-col md:flex-row z-10">
           {/* Left section - Company info */}
-          <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
+          <div className="w-full md:w-1/2 md:p-8 py-8 flex flex-col justify-center">
             <div className="max-w-md">
-              <h1 className="text-5xl font-semibold text-[#E16B33] mb-4">
+              <h1 className="text-3xl font-semibold text-[#E16B33] mb-4">
                 Let's get in touch with us
               </h1>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className=" text-gray-600 mb-8">
                 Email, call or complete the form to connect with us
                 <br />
                 We'll get back to you within 24 hours.
               </p>
 
               <div className="mb-6">
-                <h2 className="text-sm text-gray-500 font-semibold">Phone</h2>
-                <p className="text-[#E16B33]">+(91) 9099661460</p>
+                <h2 className="text-sm text-gray-500 font-medium">Phone</h2>
+                <p className="text-[#E16B33] text-sm">+(91) 9099661460</p>
               </div>
 
               <div className="mb-6">
-                <h2 className="text-sm text-gray-500 font-semibold">Email</h2>
-                <p className="text-[#E16B33]">bloomland@gmail.com</p>
+                <h2 className="text-sm text-gray-500 font-medium">Email</h2>
+                <p className="text-[#E16B33] text-sm">bloomland@gmail.com</p>
               </div>
 
               <div>
-                <h2 className="text-sm text-gray-500 font-semibold">Office</h2>
-                <p className="text-[#E16B33]">230 Norman Street New York,</p>
-                <p className="text-[#E16B33]">QC (USA) H8R 1A1</p>
+                <h2 className="text-sm text-gray-500 font-medium">Office</h2>
+                <p className="text-[#E16B33] text-sm">
+                  230 Norman Street New York,
+                </p>
+                <p className="text-[#E16B33] text-sm">QC (USA) H8R 1A1</p>
               </div>
             </div>
           </div>
 
           {/* Right section - Contact form */}
-          <div className="w-full max-w-xl bg-white rounded-lg md:shadow-lg md:p-8 px-4 py-8">
+          <div className="w-full max-w-xl bg-white rounded-lg md:shadow-lg md:p-8  py-8">
             <div className="bg-white md:p-8 rounded-lg">
-              <h2 className="text-2xl font-bold text-[#E16B33] mb-2">
+              <h2 className="text-xl font-bold text-[#E16B33] mb-2">
                 Get in Touch
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-sm">
                 We'll get back to you within 24 hours.
               </p>
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-[#F9A26B] mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-[#F9A26B] mb-2 text-sm"
+                  >
                     Email
                   </label>
                   <input
@@ -119,12 +124,15 @@ export default function ContactUs() {
                     placeholder="yourname@company.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E16B33]"
+                    className="w-full px-4 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E16B33]"
                   />
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="phone" className="block text-[#F9A26B] mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-[#F9A26B] mb-2 text-sm"
+                  >
                     Subject
                   </label>
                   <div className="flex flex-wrap gap-4">
@@ -150,7 +158,7 @@ export default function ContactUs() {
                 <div className="mb-3">
                   <label
                     htmlFor="message"
-                    className="block text-[#F9A26B] mb-2"
+                    className="block text-[#F9A26B] mb-2 text-sm"
                   >
                     Message
                   </label>
@@ -161,18 +169,20 @@ export default function ContactUs() {
                     placeholder="Type your message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E16B33]"
+                    className="w-full px-4 py-2 text-sm  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E16B33]"
                   ></textarea>
                 </div>
 
-                <label className="block text-[#F9A26B] mb-3 ">Screenshot</label>
+                <label className="block text-[#F9A26B] mb-3 text-sm">
+                  Screenshot
+                </label>
                 <div
                   onDrop={(e) => {
                     e.preventDefault();
                     handleImageUpload(e);
                   }}
                   onDragOver={(e) => e.preventDefault()}
-                  className="w-full border-b border-gray-300 py-6 px-4 text-gray-600 text-sm text-center cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
+                  className="w-full border-b border-gray-300 py-6 px-4 text-gray-600 text-xs text-center cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
                 >
                   <label>
                     Drag & drop images here or{" "}
@@ -212,7 +222,7 @@ export default function ContactUs() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#E16B33] text-white py-3 px-4 rounded-md hover:bg-[#F9A26B] transition duration-300 mt-8"
+                  className="w-full bg-[#E16B33] text-white text-sm py-3 px-4 rounded-md hover:bg-[#F9A26B] transition duration-300 mt-8"
                 >
                   Send Message
                 </button>
@@ -221,7 +231,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto">
+      <div className="md:max-w-[80%] max-w-full px-4 md:px-0 mx-auto">
         <Socials />
       </div>
       <Footer />

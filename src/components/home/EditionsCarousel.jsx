@@ -19,7 +19,7 @@ const EditionsCarousel = ({ content, handleNavigate }) => {
           content.map((data, index) => (
             <Slider key={index} className={"w-full"}>
               <section className="relative flex items-center" key={data.id}>
-                <div className="container mx-auto px-6 py-10 md:py-10">
+                <div className=" mx-auto px-6 py-10 md:py-10">
                   <div className="flex flex-col md:flex-row md:gap-12 holographic-card bg-white border border-[#3CA18F] ">
                     <div className="w-full md:w-1/3">
                       <motion.div

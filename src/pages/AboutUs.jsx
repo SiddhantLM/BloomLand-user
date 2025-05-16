@@ -13,15 +13,15 @@ const AboutUs = () => {
     <>
       <Navbar />
       <div className="lg:mt-[54px] mt-[47px] bg-gradient-to-b from-[#C1EDF1] to-white rounded-xl">
-        <h1 className="md:text-3xl text-xl text-center text-[#E16B33] pb-10 pt-15 font-medium">
+        <h1 className="md:text-2xl text-xl text-center text-[#E16B33] pb-10 pt-15 font-medium">
           About Bloomland
         </h1>
         <div className="md:px-0 px-4">
           <div className="bg-inherit">
-            <h1 className="md:text-4xl text-xl text-black text-center font-medium mb-3">
+            <h1 className="md:text-2xl text-xl text-black text-center font-medium mb-3">
               BloomLand is a global wellness movement
             </h1>
-            <h1 className="md:text-2xl text-base text-center text-gray-500">
+            <h1 className="md:text-lg text-base text-center text-gray-500">
               Reimagining holistic health and conscious living and a call to
               reset, reimagine and rise
             </h1>
@@ -32,7 +32,6 @@ const AboutUs = () => {
       <div className="md:pt-[1rem] pt-[3rem]">
         <div>
           <SectionHeader
-            subtitle={"5 Dimensions and Facts"}
             title={"Holistic Health Problems"}
             lineColor="bg-[#3CA18F]"
           />
@@ -51,18 +50,18 @@ const AboutUs = () => {
         <Solution />
       </div>
 
-      <div className="md:my-10 container mx-auto px-4">
+      <div className="md:my-10 md:max-w-[80%] max-w-full mx-auto px-4">
         <Mission />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="md:max-w-[80%] max-w-full mx-auto px-4">
         <div className="my-10">
           <SectionHeader title={"FAQS"} lineColor={"bg-[#3CA18F]"} />
         </div>
         <Faq />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="md:max-w-[80%] max-w-full mx-auto px-4">
         <Socials />
       </div>
 

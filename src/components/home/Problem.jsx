@@ -8,6 +8,8 @@ import ProblemCarousel from "../event/ProblemCarousel";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { setSelected } from "../../store/slices/authSlice";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const Problem = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -91,7 +93,7 @@ const Problem = () => {
       {isMobile ? (
         <ProblemCarousel datas={content} />
       ) : (
-        <div className="flex px-4 md:flex-row lg:flex-nowrap flex-wrap flex-col lg:container items-center mx-auto w-full lg:justify-between justify-center py-2 gap-4 pt-10 md:pt-20">
+        <div className="flex  px-4 md:flex-row lg:flex-nowrap flex-wrap flex-col container items-center mx-auto w-full lg:justify-between justify-center py-2 gap-4 pt-10 md:pt-20">
           {content.map((item, index) => (
             <div
               key={index}
@@ -102,22 +104,25 @@ const Problem = () => {
                 className="h-1/3 w-1/3 object-cover"
                 alt=""
               />
-              <h1 className="mt-4 mb-4 text-xl text-[#E16B33] font-semibold">
+              <h1 className="mt-4 mb-4 text-lg text-[#E16B33] font-semibold">
                 {item.title}
               </h1>
-              <p className="text-center lg:text-start text-sm md:text-base">
+              <p className="text-center lg:text-start text-sm ">
                 {item.description}
               </p>
             </div>
           ))}
         </div>
       )}
-      <button
+      <motion.button
+        className="mt-8 md:py-2 py-3 md:px-8 px-3 bg-[#E16B33] text-white rounded-lg  hover:bg-black/30 transition-colors text-base duration-300 w-fit self-center"
+        // transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={handleNavigate}
-        className=" w-fit self-center mt-16 md:py-3 py-2 md:px-8 px-5 bg-[#E16B33] text-white rounded-lg md:text-lg text-base h hover:scale-102 duration-300  transition"
       >
         Request Invite
-      </button>
+      </motion.button>
     </div>
   );
 };

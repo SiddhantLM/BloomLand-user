@@ -73,7 +73,7 @@ const Editions = () => {
   }, []);
 
   return (
-    <section className="relative bg-inherit container mx-auto flex">
+    <section className="relative bg-inherit xl:max-w-[80%] max-w-full mx-auto flex">
       <AnimatePresence>
         {isMobile ? (
           <EditionsCarousel content={content} handleNavigate={handleNavigate} />
@@ -89,7 +89,7 @@ const Editions = () => {
                 <div className="flex flex-col  holographic-card bg-white border border-[#3CA18F] h-full ">
                   <div className="w-full h-full flex flex-col ">
                     <motion.div
-                      className="rounded-lg overflow-hidden md:h-96"
+                      className="rounded-lg overflow-hidden md:h-86"
                       whileInView={{ opacity: [0, 1] }}
                       // transition={{ duration: 0.8 }}
                       viewport={{ once: false, amount: 0.2 }}
@@ -104,18 +104,18 @@ const Editions = () => {
 
                   <div className=" p-5 h-full flex flex-col justify-between">
                     <div>
-                      <div className=" capitalize mb-6 md:text-[35px] text-3xl font-medium text-[#E16B33] ">
+                      <div className=" capitalize mb-6 md:text-[29px] text-3xl font-medium text-[#E16B33] ">
                         {item.category} Edition
                       </div>
-                      <h2 className="text-[18px] md:text-[20px] font-medium text-black mb-2">
+                      <h2 className="text-[18px] md:text-[16px] font-medium text-black mb-2">
                         {item.title}
                       </h2>
-                      <p className="text-black md:text-[18px] font-light mb-8">
+                      <p className="text-black md:text-[14px] font-light mb-8">
                         {item.description}
                       </p>
                     </div>
                     <motion.button
-                      className=" self w-fit text-[#E16B33] md:text-xl pb-3 pl-3 text-lg font-semibold flex gap-1 items-center-safe  "
+                      className=" self w-fit text-[#E16B33] md:text-lg   pb-3 pl-3 text-lg font-semibold flex gap-1 items-center-safe  "
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleNavigate(item)}

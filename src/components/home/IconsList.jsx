@@ -63,7 +63,7 @@ const IconsList = () => {
 
   return (
     <div className="w-full bg-inherit md:py-8 overflow-hidden">
-      <div className="container mx-auto">
+      <div className=" mx-auto">
         <div className="relative w-full overflow-hidden">
           <div className="w-full relative my-10">
             <div className="animate-slide flex w-max">

@@ -156,7 +156,7 @@ const Navbar = () => {
         // transition={{ duration: 0.1 }}
       >
         <div
-          className={`container mx-auto px-4 flex items-center justify-between `}
+          className={`md:max-w-[80%] max-w-full mx-auto px-4 flex items-center justify-between `}
         >
           {/* Logo/Brand */}
           <motion.div
@@ -176,7 +176,7 @@ const Navbar = () => {
             <img
               src={Logo}
               alt="LOGO"
-              className="w-auto xl:pl-8 md:pr-3 md:h-12 h-10 object-contain p-0"
+              className="w-auto xl:pl-8 md:pr-3 md:h-9 h-9 object-contain p-0"
             />
             {/* <Logo className="h-20 w-20 p-0 m-0" /> */}
           </motion.div>
@@ -221,7 +221,7 @@ const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <ul
-              className={`flex items-center gap-6 text-white
+              className={`flex items-center gap-6 text-sm text-white
             //   scrolled || window.location.pathname === "/" ? "white" : "black"
             // }`}
             >
@@ -500,7 +500,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={handleNavigate}
             >
-              <span className="text-sm font-semibold whitespace-nowrap">
+              <span className="text-sm tracking-wide font-medium whitespace-nowrap">
                 Request Invite
               </span>
             </motion.button>
